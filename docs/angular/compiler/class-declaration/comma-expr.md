@@ -1,0 +1,56 @@
+---
+kind: ClassDeclaration
+name: CommaExpr
+module: compiler
+---
+
+# CommaExpr
+
+```ts
+class CommaExpr extends Expression {
+  isEquivalent(e: Expression): boolean;
+  isConstant();
+  visitExpression(visitor: ExpressionVisitor, context: any): any;
+}
+```
+
+[Link to repo](https://github.com/timdeschryver/angular/blob/master/packages/compiler/src/output/output_ast.ts#L880-L896)
+
+## Methods
+
+### isEquivalent
+
+```ts
+isEquivalent(e: Expression): boolean;
+```
+
+[Link to repo](https://github.com/timdeschryver/angular/blob/master/packages/compiler/src/output/output_ast.ts#L885-L887)
+
+#### Parameters (#isEquivalent-parameters)
+
+| Name | Type         | Description |
+| ---- | ------------ | ----------- |
+| e    | `Expression` |             |
+
+### isConstant
+
+```ts
+isConstant();
+```
+
+[Link to repo](https://github.com/timdeschryver/angular/blob/master/packages/compiler/src/output/output_ast.ts#L889-L891)
+
+### visitExpression
+
+```ts
+visitExpression(visitor: ExpressionVisitor, context: any): any;
+```
+
+[Link to repo](https://github.com/timdeschryver/angular/blob/master/packages/compiler/src/output/output_ast.ts#L893-L895)
+
+#### Parameters (#visitExpression-parameters)
+
+| Name    | Type                | Description |
+| ------- | ------------------- | ----------- |
+| visitor | `ExpressionVisitor` |             |
+| context | `any`               |             |

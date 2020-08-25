@@ -1,0 +1,4251 @@
+[
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "translate",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L35-L37",
+        "signature": "function translate<T = any>(\n  key: TranslateParams,\n  params: HashMap = {},\n  lang?: string\n): T;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "key",
+              "description": "",
+              "type": "TranslateParams"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "params",
+              "description": "",
+              "type": "HashMap<any>"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "lang",
+              "description": "",
+              "type": "string"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "TranslocoService",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L39-L642",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "getDefaultLang",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L96-L98",
+                "info": [],
+                "signature": "getDefaultLang();"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "setDefaultLang",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L100-L102",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "setDefaultLang(lang: string);"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "getActiveLang",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L104-L106",
+                "info": [],
+                "signature": "getActiveLang();"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "setActiveLang",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L108-L112",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "setActiveLang(lang: string);"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "setAvailableLangs",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L114-L116",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "langs",
+                      "description": "",
+                      "type": "AvailableLangs"
+                    }
+                  ]
+                ],
+                "signature": "setAvailableLangs(langs: AvailableLangs);"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "getAvailableLangs",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L125-L127",
+                "info": [
+                  [
+                    "description",
+                    {
+                      "__kind": "heading",
+                      "description": "Gets the available languages.\n"
+                    }
+                  ],
+                  [
+                    "returns",
+                    {
+                      "__kind": "heading",
+                      "description": "\nAn array of the available languages. Can be either a `string[]` or a `{ id: string; label: string }[]`\ndepending on how the available languages are set in your module.\n"
+                    }
+                  ]
+                ],
+                "signature": "getAvailableLangs();"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "load",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L129-L168",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "path",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "options",
+                      "description": "",
+                      "type": "LoadOptions"
+                    }
+                  ]
+                ],
+                "signature": "load(path: string, options: LoadOptions = {}): Observable<Translation>;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "translate",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L181-L200",
+                "info": [
+                  [
+                    "description",
+                    {
+                      "__kind": "heading",
+                      "description": "Gets the instant translated value of a key\n"
+                    }
+                  ],
+                  [
+                    "example",
+                    {
+                      "__kind": "heading",
+                      "description": "\n\ntranslate<string>('hello')\ntranslate('hello', { value: 'value' })\ntranslate<string[]>(['hello', 'key'])\ntranslate('hello', { }, 'en')\ntranslate('scope.someKey', { }, 'en')\n"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "key",
+                      "description": "",
+                      "type": "TranslateParams"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "params",
+                      "description": "",
+                      "type": "HashMap<any>"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "any"
+                    }
+                  ]
+                ],
+                "signature": "translate<T = any>(key: TranslateParams, params: HashMap = {}, lang = this.getActiveLang()): T;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "selectTranslate",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L213-L242",
+                "info": [
+                  [
+                    "description",
+                    {
+                      "__kind": "heading",
+                      "description": "Gets the translated value of a key as observable\n"
+                    }
+                  ],
+                  [
+                    "example",
+                    {
+                      "__kind": "heading",
+                      "description": "\n\nselectTranslate<string>('hello').subscribe(value => ...)\nselectTranslate<string>('hello', {}, 'es').subscribe(value => ...)\nselectTranslate<string>('hello', {}, 'todos').subscribe(value => ...)\nselectTranslate<string>('hello', {}, { scope: 'todos' }).subscribe(value => ...)\n\n"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "key",
+                      "description": "",
+                      "type": "TranslateParams"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "params",
+                      "description": "",
+                      "type": "HashMap<any>"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "TranslocoScope"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "_isObject",
+                      "description": "",
+                      "type": "boolean"
+                    }
+                  ]
+                ],
+                "signature": "selectTranslate<T = any>(  key: TranslateParams,  params?: HashMap,  lang?: string | TranslocoScope,  _isObject = false ): Observable<T>;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "translateObject",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L268-L289",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "key",
+                      "description": "",
+                      "type": "any"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "params",
+                      "description": "",
+                      "type": "HashMap<any>"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "any"
+                    }
+                  ]
+                ],
+                "signature": "translateObject<T = any>(key: TranslateObjectParams, params?: HashMap, lang = this.getActiveLang()): T | T[];"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "translateObject",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L264-L264",
+                "info": [
+                  [
+                    "description",
+                    {
+                      "__kind": "heading",
+                      "description": "Translate the given path that returns an object\n"
+                    }
+                  ],
+                  [
+                    "example",
+                    {
+                      "__kind": "heading",
+                      "description": "\n\nservice.translateObject('path.to.object', {'subpath': { value: 'someValue'}}) => returns translated object\n\n"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "key",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "params",
+                      "description": "",
+                      "type": "HashMap<any>"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "translateObject<T = any>(key: string, params?: HashMap, lang?: string): T;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "translateObject",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L265-L265",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "key",
+                      "description": "",
+                      "type": "string[]"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "params",
+                      "description": "",
+                      "type": "HashMap<any>"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "translateObject<T = any>(key: string[], params?: HashMap, lang?: string): T[];"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "translateObject",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L266-L266",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "key",
+                      "description": "",
+                      "type": "TranslateParams"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "params",
+                      "description": "",
+                      "type": "HashMap<any>"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "translateObject<T = any>(key: TranslateParams, params?: HashMap, lang?: string): T | T[];"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "translateObject",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L267-L267",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "key",
+                      "description": "",
+                      "type": "any"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "params",
+                      "description": "",
+                      "type": "null"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "translateObject<T = any>(key: HashMap | Map<string, HashMap>, params?: null, lang?: string): T[];"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "selectTranslateObject",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L294-L317",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "key",
+                      "description": "",
+                      "type": "any"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "params",
+                      "description": "",
+                      "type": "HashMap<any>"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "selectTranslateObject<T = any>(  key: TranslateObjectParams,  params?: HashMap,  lang?: string ): Observable<T> | Observable<T[]>;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "selectTranslateObject",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L291-L291",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "key",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "params",
+                      "description": "",
+                      "type": "HashMap<any>"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "selectTranslateObject<T = any>(key: string, params?: HashMap, lang?: string): Observable<T>;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "selectTranslateObject",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L292-L292",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "key",
+                      "description": "",
+                      "type": "string[]"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "params",
+                      "description": "",
+                      "type": "HashMap<any>"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "selectTranslateObject<T = any>(key: string[], params?: HashMap, lang?: string): Observable<T[]>;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "selectTranslateObject",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L293-L293",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "key",
+                      "description": "",
+                      "type": "any"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "params",
+                      "description": "",
+                      "type": "null"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "selectTranslateObject<T = any>(key: HashMap | Map<string, HashMap>, params?: null, lang?: string): Observable<T[]>;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "getTranslation",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L330-L344",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "langOrScope",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "getTranslation(langOrScope?: string): Map<string, Translation> | Translation;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "getTranslation",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L328-L328",
+                "info": [
+                  [
+                    "description",
+                    {
+                      "__kind": "heading",
+                      "description": "Gets an object of translations for a given language\n"
+                    }
+                  ],
+                  [
+                    "example",
+                    {
+                      "__kind": "heading",
+                      "description": "\n\ngetTranslation()\ngetTranslation('en')\ngetTranslation('admin-page/en')\n"
+                    }
+                  ]
+                ],
+                "signature": "getTranslation(): Map<string, Translation>;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "getTranslation",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L329-L329",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "langOrScope",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "getTranslation(langOrScope: string): Translation;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "selectTranslation",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L356-L368",
+                "info": [
+                  [
+                    "description",
+                    {
+                      "__kind": "heading",
+                      "description": "Gets an object of translations for a given language\n"
+                    }
+                  ],
+                  [
+                    "example",
+                    {
+                      "__kind": "heading",
+                      "description": "\n\nselectTranslation().subscribe() - will return the current lang translation\nselectTranslation('es').subscribe()\nselectTranslation('admin-page').subscribe() - will return the current lang scope translation\nselectTranslation('admin-page/es').subscribe()\n"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "selectTranslation(lang?: string): Observable<Translation>;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "setTranslation",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L380-L408",
+                "info": [
+                  [
+                    "description",
+                    {
+                      "__kind": "heading",
+                      "description": "Sets or merge a given translation object to current lang\n"
+                    }
+                  ],
+                  [
+                    "example",
+                    {
+                      "__kind": "heading",
+                      "description": "\n\nsetTranslation({ ... })\nsetTranslation({ ... }, 'en')\nsetTranslation({ ... }, 'es', { merge: false } )\nsetTranslation({ ... }, 'todos/en', { merge: false } )\n"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "translation",
+                      "description": "",
+                      "type": "HashMap<any>"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "any"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "options",
+                      "description": "",
+                      "type": "SetTranslationOptions"
+                    }
+                  ]
+                ],
+                "signature": "setTranslation(translation: Translation, lang = this.getActiveLang(), options: SetTranslationOptions = {});"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "setTranslationKey",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L419-L427",
+                "info": [
+                  [
+                    "description",
+                    {
+                      "__kind": "heading",
+                      "description": "Sets translation key with given value\n"
+                    }
+                  ],
+                  [
+                    "example",
+                    {
+                      "__kind": "heading",
+                      "description": "\n\nsetTranslationKey('key', 'value')\nsetTranslationKey('key.nested', 'value')\nsetTranslationKey('key.nested', 'value', 'en')\n"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "key",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "value",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "any"
+                    }
+                  ]
+                ],
+                "signature": "setTranslationKey(key: string, value: string, lang = this.getActiveLang());"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "setFallbackLangForMissingTranslation",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L433-L438",
+                "info": [
+                  [
+                    "description",
+                    {
+                      "__kind": "heading",
+                      "description": "Sets the fallback lang for the currently active language"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "fallbackLang",
+                      "description": "",
+                      "type": ""
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "{ fallbackLang }",
+                      "description": "",
+                      "type": "Pick<TranslocoConfig, \"fallbackLang\">"
+                    }
+                  ]
+                ],
+                "signature": "setFallbackLangForMissingTranslation({ fallbackLang }: Pick<TranslocoConfig, 'fallbackLang'>): void;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "_handleMissingKey",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L443-L457",
+                "info": [
+                  ["internal", { "__kind": "heading", "description": "\n" }],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "key",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "value",
+                      "description": "",
+                      "type": "any"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "params",
+                      "description": "",
+                      "type": "HashMap<any>"
+                    }
+                  ]
+                ],
+                "signature": "_handleMissingKey(key: string, value: any, params?: HashMap);"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "_isLangScoped",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L462-L464",
+                "info": [
+                  ["internal", { "__kind": "heading", "description": "\n" }],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "_isLangScoped(lang: string);"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "isLang",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L472-L474",
+                "info": [
+                  [
+                    "description",
+                    {
+                      "__kind": "heading",
+                      "description": "Checks if a given string is one of the specified available languages."
+                    }
+                  ],
+                  [
+                    "returns",
+                    {
+                      "__kind": "heading",
+                      "description": "\nTrue if the given string is an available language.\nFalse if the given string is not an available language.\n"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "isLang(lang: string): boolean;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "_loadDependencies",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L482-L489",
+                "info": [
+                  [
+                    "internal",
+                    {
+                      "__kind": "heading",
+                      "description": "\n\nWe always want to make sure the global lang is loaded\nbefore loading the scope since you can access both via the pipe/directive.\n"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "path",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "inlineLoader",
+                      "description": "",
+                      "type": "HashMap<() => Promise<HashMap<any>>>"
+                    }
+                  ]
+                ],
+                "signature": "_loadDependencies(path: string, inlineLoader?: InlineLoader): Observable<Translation | Translation[]>;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "_completeScopeWithLang",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L494-L499",
+                "info": [
+                  ["internal", { "__kind": "heading", "description": "\n" }],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "langOrScope",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "_completeScopeWithLang(langOrScope: string);"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "_setScopeAlias",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L504-L509",
+                "info": [
+                  ["internal", { "__kind": "heading", "description": "\n" }],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "scope",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "alias",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "_setScopeAlias(scope: string, alias: string);"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "ngOnDestroy",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.service.ts#L511-L513",
+                "info": [],
+                "signature": "ngOnDestroy();"
+              }
+            }
+          ],
+          [
+            "property",
+            {
+              "__kind": "table",
+              "label": "langChanges$",
+              "type": "any",
+              "description": ""
+            }
+          ],
+          [
+            "property",
+            {
+              "__kind": "table",
+              "label": "events$",
+              "type": "any",
+              "description": ""
+            }
+          ]
+        ],
+        "signature": "class TranslocoService implements OnDestroy {\n  langChanges$: Observable<string>;\n  events$ = this.events.asObservable();\n\n  getDefaultLang();\n  setDefaultLang(lang: string);\n  getActiveLang();\n  setActiveLang(lang: string);\n  setAvailableLangs(langs: AvailableLangs);\n  getAvailableLangs();\n  load(path: string, options: LoadOptions = {}): Observable<Translation>;\n  translate<T = any>(\n    key: TranslateParams,\n    params: HashMap = {},\n    lang = this.getActiveLang()\n  ): T;\n  selectTranslate<T = any>(\n    key: TranslateParams,\n    params?: HashMap,\n    lang?: string | TranslocoScope,\n    _isObject = false\n  ): Observable<T>;\n  translateObject<T = any>(\n    key: TranslateObjectParams,\n    params?: HashMap,\n    lang = this.getActiveLang()\n  ): T | T[];\n  translateObject<T = any>(key: string, params?: HashMap, lang?: string): T;\n  translateObject<T = any>(key: string[], params?: HashMap, lang?: string): T[];\n  translateObject<T = any>(\n    key: TranslateParams,\n    params?: HashMap,\n    lang?: string\n  ): T | T[];\n  translateObject<T = any>(\n    key: HashMap | Map<string, HashMap>,\n    params?: null,\n    lang?: string\n  ): T[];\n  selectTranslateObject<T = any>(\n    key: TranslateObjectParams,\n    params?: HashMap,\n    lang?: string\n  ): Observable<T> | Observable<T[]>;\n  selectTranslateObject<T = any>(\n    key: string,\n    params?: HashMap,\n    lang?: string\n  ): Observable<T>;\n  selectTranslateObject<T = any>(\n    key: string[],\n    params?: HashMap,\n    lang?: string\n  ): Observable<T[]>;\n  selectTranslateObject<T = any>(\n    key: HashMap | Map<string, HashMap>,\n    params?: null,\n    lang?: string\n  ): Observable<T[]>;\n  getTranslation(langOrScope?: string): Map<string, Translation> | Translation;\n  getTranslation(): Map<string, Translation>;\n  getTranslation(langOrScope: string): Translation;\n  selectTranslation(lang?: string): Observable<Translation>;\n  setTranslation(\n    translation: Translation,\n    lang = this.getActiveLang(),\n    options: SetTranslationOptions = {}\n  );\n  setTranslationKey(key: string, value: string, lang = this.getActiveLang());\n  setFallbackLangForMissingTranslation({\n    fallbackLang,\n  }: Pick<TranslocoConfig, \"fallbackLang\">): void;\n  _handleMissingKey(key: string, value: any, params?: HashMap);\n  _isLangScoped(lang: string);\n  isLang(lang: string): boolean;\n  _loadDependencies(\n    path: string,\n    inlineLoader?: InlineLoader\n  ): Observable<Translation | Translation[]>;\n  _completeScopeWithLang(langOrScope: string);\n  _setScopeAlias(scope: string, alias: string);\n  ngOnDestroy();\n}"
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "TranslocoDirective",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.directive.ts#L28-L156",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "ngOnInit",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.directive.ts#L62-L94",
+                "info": [],
+                "signature": "ngOnInit();"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "ngOnChanges",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.directive.ts#L96-L101",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "changes",
+                      "description": "",
+                      "type": "any"
+                    }
+                  ]
+                ],
+                "signature": "ngOnChanges(changes);"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "ngOnDestroy",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.directive.ts#L142-L144",
+                "info": [],
+                "signature": "ngOnDestroy();"
+              }
+            }
+          ],
+          [
+            "property",
+            {
+              "__kind": "table",
+              "label": "subscription",
+              "type": "any",
+              "description": ""
+            }
+          ],
+          [
+            "property",
+            {
+              "__kind": "table",
+              "label": "view",
+              "type": "any",
+              "description": ""
+            }
+          ],
+          [
+            "property",
+            {
+              "__kind": "table",
+              "label": "key",
+              "type": "string",
+              "description": ""
+            }
+          ],
+          [
+            "property",
+            {
+              "__kind": "table",
+              "label": "params",
+              "type": "HashMap<any>",
+              "description": ""
+            }
+          ],
+          [
+            "property",
+            {
+              "__kind": "table",
+              "label": "inlineScope",
+              "type": "string",
+              "description": ""
+            }
+          ],
+          [
+            "property",
+            {
+              "__kind": "table",
+              "label": "inlineRead",
+              "type": "string",
+              "description": ""
+            }
+          ],
+          [
+            "property",
+            {
+              "__kind": "table",
+              "label": "inlineLang",
+              "type": "string",
+              "description": ""
+            }
+          ],
+          [
+            "property",
+            {
+              "__kind": "table",
+              "label": "inlineTpl",
+              "type": "any",
+              "description": ""
+            }
+          ]
+        ],
+        "signature": "class TranslocoDirective implements OnInit, OnDestroy, OnChanges {\n  subscription: Subscription | null;\n  view: EmbeddedViewRef<any>;\n  @Input(\"transloco\") key: string;\n  @Input(\"translocoParams\") params: HashMap = {};\n  @Input(\"translocoScope\") inlineScope: string | undefined;\n  @Input(\"translocoRead\") inlineRead: string | undefined;\n  @Input(\"translocoLang\") inlineLang: string | undefined;\n  @Input(\"translocoLoadingTpl\") inlineTpl: TemplateRef<any> | undefined;\n\n  ngOnInit();\n  ngOnChanges(changes);\n  ngOnDestroy();\n}"
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "TranslocoPipe",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.pipe.ts#L12-L87",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "transform",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.pipe.ts#L35-L69",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "key",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "params",
+                      "description": "",
+                      "type": "HashMap<any>"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "inlineLang",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "transform(key: string | null, params?: HashMap | undefined, inlineLang?: string | undefined): string;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "ngOnDestroy",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.pipe.ts#L71-L73",
+                "info": [],
+                "signature": "ngOnDestroy();"
+              }
+            }
+          ]
+        ],
+        "signature": "class TranslocoPipe implements PipeTransform, OnDestroy {\n  transform(\n    key: string | null,\n    params?: HashMap | undefined,\n    inlineLang?: string | undefined\n  ): string;\n  ngOnDestroy();\n}"
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "TranslocoModule",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.module.ts#L32-L38",
+        "info": [],
+        "signature": "class TranslocoModule {}"
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "defaultProviders",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.module.ts#L11-L30",
+        "signature": "const defaultProviders: (\n  | { provide: any; useClass: typeof DefaultTranspiler; deps: any[] }\n  | { provide: any; useClass: typeof DefaultHandler; deps?: undefined }\n  | { provide: any; useClass: typeof DefaultInterceptor; deps?: undefined }\n  | { provide: any; useClass: typeof DefaultFallbackStrategy; deps: any[] }\n)[];",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "TRANSLOCO_LOADER",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.loader.ts#L21-L21",
+        "signature": "const TRANSLOCO_LOADER: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "TranslocoLoader",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.loader.ts#L5-L7",
+        "signature": "interface TranslocoLoader {}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "TranslocoConfig",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.config.ts#L4-L22",
+        "signature": "export type TranslocoConfig = {\n  defaultLang: string;\n  reRenderOnLangChange?: boolean;\n  prodMode?: boolean;\n  fallbackLang?: string | string[];\n  failedRetries?: number;\n  /** @deprecated */\n  scopeMapping?: HashMap<string>;\n  availableLangs?: AvailableLangs;\n  flatten?: {\n    aot?: boolean;\n  };\n  missingHandler?: {\n    logMissingKey?: boolean;\n    useFallbackTranslation?: boolean;\n    allowEmpty?: boolean;\n  };\n  interpolation?: [string, string];\n};",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "TRANSLOCO_CONFIG",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.config.ts#L24-L29",
+        "signature": "const TRANSLOCO_CONFIG: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "defaultConfig",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.config.ts#L31-L46",
+        "signature": "const defaultConfig: TranslocoConfig;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "provideTranslocoConfig",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.config.ts#L51-L56",
+        "signature": "function provideTranslocoConfig(\n  config: Partial<TranslocoConfig> = defaultConfig\n): Provider;",
+        "info": [
+          ["deprecated", { "__kind": "heading", "description": "\n" }],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "config",
+              "description": "",
+              "type": "Partial<TranslocoConfig>"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "translocoConfig",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.config.ts#L64-L66",
+        "signature": "function translocoConfig(\n  config: Partial<TranslocoConfig> = defaultConfig\n): TranslocoConfig;",
+        "info": [
+          [
+            "description",
+            {
+              "__kind": "heading",
+              "description": "Sets up TranslocoConfig object.\n"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "config",
+              "description": "The partial config object to load, this is optional,",
+              "type": "Partial<TranslocoConfig>"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "TRANSLOCO_TRANSPILER",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.transpiler.ts#L6-L6",
+        "signature": "const TRANSLOCO_TRANSPILER: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "DefaultTranspiler",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.transpiler.ts#L14-L81",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "transpile",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.transpiler.ts#L21-L38",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "value",
+                      "description": "",
+                      "type": "any"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "params",
+                      "description": "",
+                      "type": "HashMap<any>"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "translation",
+                      "description": "",
+                      "type": "HashMap<any>"
+                    }
+                  ]
+                ],
+                "signature": "transpile(value: any, params: HashMap = {}, translation: Translation): any;"
+              }
+            }
+          ]
+        ],
+        "signature": "class DefaultTranspiler implements TranslocoTranspiler {\n  transpile(value: any, params: HashMap = {}, translation: Translation): any;\n}"
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "TranslocoTranspiler",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.transpiler.ts#L8-L12",
+        "signature": "interface TranslocoTranspiler {}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "FunctionalTranspiler",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.transpiler.ts#L108-L143",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "transpile",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco.transpiler.ts#L114-L142",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "value",
+                      "description": "",
+                      "type": "any"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "params",
+                      "description": "",
+                      "type": "HashMap<any>"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "translation",
+                      "description": "",
+                      "type": "HashMap<any>"
+                    }
+                  ]
+                ],
+                "signature": "transpile(value: any, params: HashMap = {}, translation: Translation): any;"
+              }
+            }
+          ]
+        ],
+        "signature": "class FunctionalTranspiler\n  extends DefaultTranspiler\n  implements TranslocoTranspiler {\n  transpile(value: any, params: HashMap = {}, translation: Translation): any;\n}"
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "getFunctionArgs",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.transpiler.ts#L93-L106",
+        "signature": "function getFunctionArgs(argsString: string): string[];",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "argsString",
+              "description": "",
+              "type": "string"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "TranslocoTranspilerFunction",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.transpiler.ts#L89-L91",
+        "signature": "interface TranslocoTranspilerFunction {}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "Translation",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/types.ts#L20-L20",
+        "signature": "export type Translation = HashMap;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "FailedEvent",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/types.ts#L14-L17",
+        "signature": "export type FailedEvent = {\n  type: \"translationLoadFailure\";\n  payload: LoadedEvent[\"payload\"];\n};",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "HashMap",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/types.ts#L1-L1",
+        "signature": "export type HashMap<T = any> = { [key: string]: T };",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "LoadedEvent",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/types.ts#L3-L12",
+        "signature": "export type LoadedEvent = {\n  type: \"translationLoadSuccess\";\n  wasFailure: boolean;\n  payload: {\n    scope: string | null;\n    langName: string;\n    /** @deprecated */\n    lang: string;\n  };\n};",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "TranslocoEvents",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/types.ts#L19-L19",
+        "signature": "export type TranslocoEvents = LoadedEvent | FailedEvent;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "TRANSLOCO_SCOPE",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco-scope.ts#L4-L4",
+        "signature": "const TRANSLOCO_SCOPE: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "TRANSLOCO_LOADING_TEMPLATE",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco-loading-template.ts#L3-L5",
+        "signature": "const TRANSLOCO_LOADING_TEMPLATE: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "TRANSLOCO_LANG",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco-lang.ts#L3-L3",
+        "signature": "const TRANSLOCO_LANG: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "TestingLoader",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco-testing.module.ts#L8-L15",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "getTranslation",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco-testing.module.ts#L12-L14",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "getTranslation(lang: string): Observable<Translation> | Promise<Translation>;"
+              }
+            }
+          ]
+        ],
+        "signature": "class TestingLoader implements TranslocoLoader {\n  getTranslation(lang: string): Observable<Translation> | Promise<Translation>;\n}"
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "TranslocoTestingModule",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco-testing.module.ts#L17-L48",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "withLangs",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco-testing.module.ts#L21-L47",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "langs",
+                      "description": "",
+                      "type": "HashMap<HashMap<any>>"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "config",
+                      "description": "",
+                      "type": "Partial<TranslocoConfig>"
+                    }
+                  ]
+                ],
+                "signature": "static withLangs(  langs: HashMap<Translation>,  config: Partial<TranslocoConfig> = {} ): ModuleWithProviders<TranslocoTestingModule>;"
+              }
+            }
+          ]
+        ],
+        "signature": "class TranslocoTestingModule {\n  static withLangs(\n    langs: HashMap<Translation>,\n    config: Partial<TranslocoConfig> = {}\n  ): ModuleWithProviders<TranslocoTestingModule>;\n}"
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "TemplateHandler",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/template-handler.ts#L7-L36",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "attachView",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/template-handler.ts#L14-L24",
+                "info": [],
+                "signature": "attachView();"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "detachView",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/template-handler.ts#L26-L28",
+                "info": [],
+                "signature": "detachView();"
+              }
+            }
+          ]
+        ],
+        "signature": "class TemplateHandler {\n  attachView();\n  detachView();\n}"
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "View",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/template-handler.ts#L5-L5",
+        "signature": "export type View = string | TemplateRef<any> | Type<any>;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "TRANSLOCO_INTERCEPTOR",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.interceptor.ts#L4-L4",
+        "signature": "const TRANSLOCO_INTERCEPTOR: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "TranslocoInterceptor",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco.interceptor.ts#L6-L10",
+        "signature": "interface TranslocoInterceptor {}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "TRANSLOCO_FALLBACK_STRATEGY",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco-fallback-strategy.ts#L4-L4",
+        "signature": "const TRANSLOCO_FALLBACK_STRATEGY: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "TranslocoFallbackStrategy",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco-fallback-strategy.ts#L6-L8",
+        "signature": "interface TranslocoFallbackStrategy {}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "DefaultFallbackStrategy",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco-fallback-strategy.ts#L10-L21",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "getNextLangs",
+              "info": {
+                "file": "projects/ngneat/transloco/src/lib/transloco-fallback-strategy.ts#L13-L20",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "failedLang",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "getNextLangs(failedLang: string);"
+              }
+            }
+          ]
+        ],
+        "signature": "class DefaultFallbackStrategy implements TranslocoFallbackStrategy {\n  getNextLangs(failedLang: string);\n}"
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "TRANSLOCO_MISSING_HANDLER",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco-missing-handler.ts#L6-L6",
+        "signature": "const TRANSLOCO_MISSING_HANDLER: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "TranslocoMissingHandler",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco-missing-handler.ts#L12-L14",
+        "signature": "interface TranslocoMissingHandler {}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "TranslocoMissingHandlerData",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/transloco-missing-handler.ts#L8-L10",
+        "signature": "interface TranslocoMissingHandlerData {\n  activeLang: string;\n}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "getBrowserCultureLang",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/browser-lang.ts#L26-L36",
+        "signature": "function getBrowserCultureLang(): string;",
+        "info": [
+          [
+            "description",
+            {
+              "__kind": "heading",
+              "description": "Returns the culture language code name from the browser, e.g. \"en-US\"\n"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "getBrowserLang",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/browser-lang.ts#L6-L21",
+        "signature": "function getBrowserLang(): string | undefined;",
+        "info": [
+          [
+            "description",
+            {
+              "__kind": "heading",
+              "description": "Returns the language code name from the browser, e.g. \"en\"\n"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "ProviderScope",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/types.ts#L26-L30",
+        "signature": "export type ProviderScope = {\n  scope: string;\n  loader?: InlineLoader;\n  alias?: string;\n};",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "getPipeValue",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/shared.ts#L42-L50",
+        "signature": "function getPipeValue(\n  str: string,\n  value: string,\n  char = \"|\"\n): [boolean, string];",
+        "info": [
+          [
+            "example",
+            {
+              "__kind": "heading",
+              "description": "\n\ngetPipeValue('todos|scoped', 'scoped') [true, 'todos']\ngetPipeValue('en|static', 'static') [true, 'en']\ngetPipeValue('en', 'static') [false, 'en']\n"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "str",
+              "description": "",
+              "type": "string"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "value",
+              "description": "",
+              "type": "string"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "char",
+              "description": "",
+              "type": "string"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "getLangFromScope",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/shared.ts#L27-L33",
+        "signature": "function getLangFromScope(lang: string): string;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "lang",
+              "description": "",
+              "type": "string"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "getScopeFromLang",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/shared.ts#L12-L19",
+        "signature": "function getScopeFromLang(lang: string): string;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "lang",
+              "description": "",
+              "type": "string"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "PersistStorage",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/types.ts#L21-L21",
+        "signature": "export type PersistStorage = Pick<\n  Storage,\n  \"getItem\" | \"setItem\" | \"removeItem\"\n>;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "TranslateParams",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/types.ts#L22-L22",
+        "signature": "export type TranslateParams = string | string[];",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "TranslateObjectParams",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/types.ts#L23-L23",
+        "signature": "export type TranslateObjectParams =\n  | TranslateParams\n  | HashMap\n  | Map<string, HashMap>;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "AvailableLangs",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/types.ts#L24-L24",
+        "signature": "export type AvailableLangs = string[] | { id: string; label: string }[];",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "SetTranslationOptions",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/types.ts#L25-L25",
+        "signature": "export type SetTranslationOptions = { merge?: boolean; emitChange?: boolean };",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "MaybeArray",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/types.ts#L31-L31",
+        "signature": "export type MaybeArray<T> = T | T[];",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "TranslocoScope",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/types.ts#L32-L32",
+        "signature": "export type TranslocoScope = ProviderScope | string | undefined;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "InlineLoader",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/types.ts#L33-L33",
+        "signature": "export type InlineLoader = HashMap<() => Promise<Translation>>;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "LoadOptions",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/types.ts#L34-L34",
+        "signature": "export type LoadOptions = {\n  fallbackLangs?: string[] | null;\n  inlineLoader?: InlineLoader | null;\n};",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "getValue",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/helpers.ts#L4-L10",
+        "signature": "function getValue(obj: object, path: string);",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "obj",
+              "description": "",
+              "type": "object"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "path",
+              "description": "",
+              "type": "string"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "setValue",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/helpers.ts#L12-L29",
+        "signature": "function setValue(obj: any, prop: string, val: any);",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "obj",
+              "description": "",
+              "type": "any"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "prop",
+              "description": "",
+              "type": "string"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "val",
+              "description": "",
+              "type": "any"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "size",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/helpers.ts#L31-L45",
+        "signature": "function size(collection);",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "collection",
+              "description": "",
+              "type": "any"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "isEmpty",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/helpers.ts#L47-L49",
+        "signature": "function isEmpty(collection);",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "collection",
+              "description": "",
+              "type": "any"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "isFunction",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/helpers.ts#L51-L53",
+        "signature": "function isFunction(val: any): val is Function;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "val",
+              "description": "",
+              "type": "any"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "isString",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/helpers.ts#L55-L57",
+        "signature": "function isString(val: any): val is string;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "val",
+              "description": "",
+              "type": "any"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "isNumber",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/helpers.ts#L59-L61",
+        "signature": "function isNumber(val: any): val is number;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "val",
+              "description": "",
+              "type": "any"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "isObject",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/helpers.ts#L63-L65",
+        "signature": "function isObject(item): boolean;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "item",
+              "description": "",
+              "type": "any"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "coerceArray",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/helpers.ts#L67-L69",
+        "signature": "function coerceArray(val);",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "val",
+              "description": "",
+              "type": "any"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "toCamelCase",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/helpers.ts#L79-L83",
+        "signature": "function toCamelCase(str: string): string;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "str",
+              "description": "",
+              "type": "string"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "isBrowser",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/helpers.ts#L85-L87",
+        "signature": "function isBrowser();",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "isNil",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/helpers.ts#L89-L91",
+        "signature": "function isNil(value: any);",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "value",
+              "description": "",
+              "type": "any"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "isDefined",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/helpers.ts#L93-L95",
+        "signature": "function isDefined(value: any);",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "value",
+              "description": "",
+              "type": "any"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "toNumber",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/helpers.ts#L97-L105",
+        "signature": "function toNumber(value: number | string): number | null;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "value",
+              "description": "",
+              "type": "string | number"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "isScopeObject",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/helpers.ts#L107-L109",
+        "signature": "function isScopeObject(item: any): item is ProviderScope;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "item",
+              "description": "",
+              "type": "any"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "hasInlineLoader",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/helpers.ts#L111-L113",
+        "signature": "function hasInlineLoader(item: any): item is ProviderScope;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "item",
+              "description": "",
+              "type": "any"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "unflatten",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/helpers.ts#L115-L117",
+        "signature": "function unflatten(obj: Translation): Translation;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "obj",
+              "description": "",
+              "type": "import(\"C:/Users/tdeschryver/dev/throw-aways/transloco/projects/ngneat/transloco/src/lib/types\").HashMap<any>"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "flatten",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco/src/lib/helpers.ts#L119-L121",
+        "signature": "function flatten(obj: Translation): Translation;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "obj",
+              "description": "",
+              "type": "import(\"C:/Users/tdeschryver/dev/throw-aways/transloco/projects/ngneat/transloco/src/lib/types\").HashMap<any>"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "TranslocoLocaleService",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.service.ts#L22-L125",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "getLocale",
+              "info": {
+                "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.service.ts#L52-L54",
+                "info": [],
+                "signature": "getLocale();"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "setLocale",
+              "info": {
+                "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.service.ts#L56-L63",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "locale",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "setLocale(locale: Locale);"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "localizeDate",
+              "info": {
+                "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.service.ts#L79-L82",
+                "info": [
+                  [
+                    "description",
+                    {
+                      "__kind": "heading",
+                      "description": "Transform a date into the locale's date format.\n\nThe date expression: a `Date` object, a number\n(milliseconds since UTC epoch), or an ISO string (https://www.w3.org/TR/NOTE-datetime).\n"
+                    }
+                  ],
+                  [
+                    "example",
+                    {
+                      "__kind": "heading",
+                      "description": "\n\nlocalizeDate(new Date(2019, 9, 7, 12, 0, 0)) // 10/7/2019\nlocalizeDate(date, 'en-US', { dateStyle: 'medium', timeStyle: 'medium' }) // Sep 10, 2019, 10:46:12 PM\nlocalizeDate(date) 'en-US', { timeZone: 'UTC', timeStyle: 'full' } // 7:40:32 PM Coordinated Universal Time\nlocalizeDate(1, 'en-US', { dateStyle: 'medium' }) // Jan 1, 1970\nlocalizeDate('2019-02-08', 'en-US', { dateStyle: 'medium' }) // Feb 8, 2019\n"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "date",
+                      "description": "",
+                      "type": "ValidDate"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "locale",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "options",
+                      "description": "",
+                      "type": "DateFormatOptions"
+                    }
+                  ]
+                ],
+                "signature": "localizeDate(date: ValidDate, locale: Locale = this.getLocale(), options?: DateFormatOptions): string;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "localizeNumber",
+              "info": {
+                "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.service.ts#L91-L102",
+                "info": [
+                  [
+                    "description",
+                    {
+                      "__kind": "heading",
+                      "description": "Transform a number into the locale's number format according to the number type.\n\nlocalizeNumber(1234567890, 'decimal') // 1,234,567,890\nlocalizeNumber(0.5, 'percent') // 50%\nlocalizeNumber(1000, 'currency') // $1,000.00\n"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "value",
+                      "description": "",
+                      "type": "string | number"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "type",
+                      "description": "",
+                      "type": "NumberTypes"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "locale",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "options",
+                      "description": "",
+                      "type": "Intl.NumberFormatOptions"
+                    }
+                  ]
+                ],
+                "signature": "localizeNumber(  value: number | string,  type: NumberTypes,  locale: Locale = this.getLocale(),  options?: Intl.NumberFormatOptions ): string;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "_resolveCurrencyCode",
+              "info": {
+                "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.service.ts#L107-L109",
+                "info": [
+                  ["internal", { "__kind": "heading", "description": "\n" }],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "locale",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "_resolveCurrencyCode(locale: Locale = this.getLocale());"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "ngOnDestroy",
+              "info": {
+                "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.service.ts#L122-L124",
+                "info": [],
+                "signature": "ngOnDestroy();"
+              }
+            }
+          ],
+          [
+            "property",
+            {
+              "__kind": "table",
+              "label": "localeChanges$",
+              "type": "any",
+              "description": ""
+            }
+          ]
+        ],
+        "signature": "class TranslocoLocaleService implements OnDestroy {\n  localeChanges$: Observable<Locale>;\n\n  getLocale();\n  setLocale(locale: Locale);\n  localizeDate(\n    date: ValidDate,\n    locale: Locale = this.getLocale(),\n    options?: DateFormatOptions\n  ): string;\n  localizeNumber(\n    value: number | string,\n    type: NumberTypes,\n    locale: Locale = this.getLocale(),\n    options?: Intl.NumberFormatOptions\n  ): string;\n  _resolveCurrencyCode(locale: Locale = this.getLocale());\n  ngOnDestroy();\n}"
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "LocaleFormatOptions",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.config.ts#L6-L11",
+        "signature": "interface LocaleFormatOptions {\n  date?: DateFormatOptions;\n  decimal?: NumberFormatOptions;\n  currency?: NumberFormatOptions;\n  percent?: NumberFormatOptions;\n}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "LocaleConfig",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.config.ts#L13-L16",
+        "signature": "interface LocaleConfig {\n  global?: LocaleFormatOptions;\n  localeBased?: HashMap<LocaleFormatOptions>;\n}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "TranslocoLocaleConfig",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.config.ts#L18-L23",
+        "signature": "interface TranslocoLocaleConfig {\n  defaultLocale?: Locale;\n  localeConfig?: LocaleConfig;\n  langToLocaleMapping?: HashMap<Locale>;\n  localeToCurrencyMapping?: HashMap<Currency>;\n}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "defaultConfig",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.config.ts#L25-L33",
+        "signature": "const defaultConfig: TranslocoLocaleConfig;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "LOCALE_DEFAULT_LOCALE",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.config.ts#L35-L35",
+        "signature": "const LOCALE_DEFAULT_LOCALE: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "LOCALE_LANG_MAPPING",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.config.ts#L36-L36",
+        "signature": "const LOCALE_LANG_MAPPING: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "LOCALE_CONFIG",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.config.ts#L37-L37",
+        "signature": "const LOCALE_CONFIG: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "LOCALE_CURRENCY_MAPPING",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.config.ts#L38-L38",
+        "signature": "const LOCALE_CURRENCY_MAPPING: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "NumberFormatOptions",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.types.ts#L1-L26",
+        "signature": "interface NumberFormatOptions {\n  useGrouping?: Intl.NumberFormatOptions[\"useGrouping\"];\n  minimumIntegerDigits?: Intl.NumberFormatOptions[\"minimumIntegerDigits\"];\n  minimumFractionDigits?: Intl.NumberFormatOptions[\"minimumFractionDigits\"];\n  maximumFractionDigits?: Intl.NumberFormatOptions[\"maximumFractionDigits\"];\n  minimumSignificantDigits?: Intl.NumberFormatOptions[\"minimumSignificantDigits\"];\n  maximumSignificantDigits?: number;\n}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "NumberTypes",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.types.ts#L31-L31",
+        "signature": "export type NumberTypes = \"currency\" | \"decimal\" | \"percent\";",
+        "info": [
+          [
+            "description",
+            {
+              "__kind": "heading",
+              "description": "The number display formatting type.\n"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "DateFormatStyles",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.types.ts#L36-L36",
+        "signature": "export type DateFormatStyles = \"full\" | \"long\" | \"medium\" | \"short\";",
+        "info": [
+          [
+            "description",
+            {
+              "__kind": "heading",
+              "description": "Allowed values with Date and Time formats\n"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "TimezoneNameFormats",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.types.ts#L41-L41",
+        "signature": "export type TimezoneNameFormats = \"short\" | \"long\";",
+        "info": [
+          [
+            "description",
+            {
+              "__kind": "heading",
+              "description": "Common allowed formats for time zones\n"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "DateStringFormats",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.types.ts#L46-L46",
+        "signature": "export type DateStringFormats = TimezoneNameFormats | \"narrow\";",
+        "info": [
+          [
+            "description",
+            {
+              "__kind": "heading",
+              "description": "Common allowed formats for date strings\n"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "DateNumberFormats",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.types.ts#L51-L51",
+        "signature": "export type DateNumberFormats = \"numeric\" | \"2-digit\";",
+        "info": [
+          [
+            "description",
+            {
+              "__kind": "heading",
+              "description": "Common allowed formats for numbers\n"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "DateFormatOptions",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.types.ts#L56-L125",
+        "signature": "interface DateFormatOptions {\n  dateStyle?: DateFormatStyles;\n  timeStyle?: DateFormatStyles;\n  fractionalSecondDigits?: 0 | 1 | 2 | 3;\n  dayPeriod?: DateStringFormats;\n  hour12?: boolean;\n  localeMatcher?: \"lookup\" | \"best fit\";\n  formatMatcher?: \"lookup\" | \"best fit\";\n  weekday?: DateStringFormats;\n  era?: DateStringFormats;\n  year?: DateNumberFormats;\n  month?: DateStringFormats | DateNumberFormats;\n  day?: DateNumberFormats;\n  hour?: DateNumberFormats;\n  minute?: DateNumberFormats;\n  second?: DateNumberFormats;\n  timeZone?: Intl.DateTimeFormatOptions[\"timeZone\"];\n  timeZoneName?: TimezoneNameFormats;\n}",
+        "info": [
+          [
+            "description",
+            {
+              "__kind": "heading",
+              "description": "Supported Intl calender types\n"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "Locale",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.types.ts#L128-L128",
+        "signature": "export type Locale = string;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "Currency",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.types.ts#L131-L131",
+        "signature": "export type Currency = string;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "ValidDate",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.types.ts#L133-L133",
+        "signature": "export type ValidDate = Date | string | number;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "pipes",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.module.ts#L21-L21",
+        "signature": "const pipes: (\n  | typeof TranslocoCurrencyPipe\n  | typeof TranslocoDatePipe\n  | typeof TranslocoDecimalPipe\n  | typeof TranslocoPercentPipe\n)[];",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "TranslocoLocaleModule",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.module.ts#L23-L59",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "init",
+              "info": {
+                "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.module.ts#L28-L58",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "config",
+                      "description": "",
+                      "type": "TranslocoLocaleConfig"
+                    }
+                  ]
+                ],
+                "signature": "static init(config: TranslocoLocaleConfig = {}): ModuleWithProviders<TranslocoLocaleModule>;"
+              }
+            }
+          ]
+        ],
+        "signature": "class TranslocoLocaleModule {\n  static init(\n    config: TranslocoLocaleConfig = {}\n  ): ModuleWithProviders<TranslocoLocaleModule>;\n}"
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "TranslocoDatePipe",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/pipes/transloco-date.pipe.ts#L9-L49",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "transform",
+              "info": {
+                "file": "projects/ngneat/transloco-locale/src/lib/pipes/transloco-date.pipe.ts#L36-L44",
+                "info": [
+                  [
+                    "description",
+                    {
+                      "__kind": "heading",
+                      "description": "Transform a date into the locale's date format.\n\nThe date expression: a `Date` object,  a number\n(milliseconds since UTC epoch), or an ISO string (https://www.w3.org/TR/NOTE-datetime).\n"
+                    }
+                  ],
+                  [
+                    "example",
+                    {
+                      "__kind": "heading",
+                      "description": "\n\ndate | translocoDate: {} : en-US // 9/10/2019\ndate | translocoDate: { dateStyle: 'medium', timeStyle: 'medium' } : en-US // Sep 10, 2019, 10:46:12 PM\ndate | translocoDate: { timeZone: 'UTC', timeStyle: 'full' } : en-US // 7:40:32 PM Coordinated Universal Time\n1 | translocoDate: { dateStyle: 'medium' } // Jan 1, 1970\n'2019-02-08' | translocoDate: { dateStyle: 'medium' } // Feb 8, 2019\n"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "date",
+                      "description": "",
+                      "type": "ValidDate"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "options",
+                      "description": "",
+                      "type": "DateFormatOptions"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "locale",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "transform(date: ValidDate, options: DateFormatOptions = {}, locale?: Locale);"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "ngOnDestroy",
+              "info": {
+                "file": "projects/ngneat/transloco-locale/src/lib/pipes/transloco-date.pipe.ts#L46-L48",
+                "info": [],
+                "signature": "ngOnDestroy(): void;"
+              }
+            }
+          ]
+        ],
+        "signature": "class TranslocoDatePipe\n  extends TranslocoLocalePipe\n  implements PipeTransform, OnDestroy {\n  transform(date: ValidDate, options: DateFormatOptions = {}, locale?: Locale);\n  ngOnDestroy(): void;\n}"
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "TranslocoCurrencyPipe",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/pipes/transloco-currency.pipe.ts#L9-L54",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "transform",
+              "info": {
+                "file": "projects/ngneat/transloco-locale/src/lib/pipes/transloco-currency.pipe.ts#L32-L49",
+                "info": [
+                  [
+                    "description",
+                    {
+                      "__kind": "heading",
+                      "description": "Transform a given number into the locale's currency format.\n"
+                    }
+                  ],
+                  [
+                    "example",
+                    {
+                      "__kind": "heading",
+                      "description": "\n\n1000000 | translocoCurrency: 'symbol' : {} : USD // $1,000,000.00\n1000000 | translocoCurrency: 'name' : {} : USD // 1,000,000.00 US dollars\n1000000 | translocoCurrency: 'symbol' : {minimumFractionDigits: 0 } : USD // $1,000,000\n\n"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "value",
+                      "description": "",
+                      "type": "string | number"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "display",
+                      "description": "",
+                      "type": "\"symbol\" | \"code\" | \"name\""
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "numberFormatOptions",
+                      "description": "",
+                      "type": "NumberFormatOptions"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "currencyCode",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "locale",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "transform(  value: number | string,  display: 'code' | 'symbol' | 'name' = 'symbol',  numberFormatOptions: NumberFormatOptions = {},  currencyCode?: Currency,  locale?: Locale ): string;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "ngOnDestroy",
+              "info": {
+                "file": "projects/ngneat/transloco-locale/src/lib/pipes/transloco-currency.pipe.ts#L51-L53",
+                "info": [],
+                "signature": "ngOnDestroy(): void;"
+              }
+            }
+          ]
+        ],
+        "signature": "class TranslocoCurrencyPipe\n  extends TranslocoLocalePipe\n  implements PipeTransform, OnDestroy {\n  transform(\n    value: number | string,\n    display: \"code\" | \"symbol\" | \"name\" = \"symbol\",\n    numberFormatOptions: NumberFormatOptions = {},\n    currencyCode?: Currency,\n    locale?: Locale\n  ): string;\n  ngOnDestroy(): void;\n}"
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "TranslocoPercentPipe",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/pipes/transloco-percent.pipe.ts#L9-L45",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "transform",
+              "info": {
+                "file": "projects/ngneat/transloco-locale/src/lib/pipes/transloco-percent.pipe.ts#L31-L40",
+                "info": [
+                  [
+                    "description",
+                    {
+                      "__kind": "heading",
+                      "description": "Transform a given number into the locale's currency format.\n"
+                    }
+                  ],
+                  [
+                    "example",
+                    {
+                      "__kind": "heading",
+                      "description": "\n\n1 | translocoPercent : {} : en-US // 100%\n\"1\" | translocoPercent : {} : en-US // 100%\n\n"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "value",
+                      "description": "",
+                      "type": "string | number"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "numberFormatOptions",
+                      "description": "",
+                      "type": "NumberFormatOptions"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "locale",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "transform(value: number | string, numberFormatOptions: NumberFormatOptions = {}, locale?: Locale): string;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "ngOnDestroy",
+              "info": {
+                "file": "projects/ngneat/transloco-locale/src/lib/pipes/transloco-percent.pipe.ts#L42-L44",
+                "info": [],
+                "signature": "ngOnDestroy(): void;"
+              }
+            }
+          ]
+        ],
+        "signature": "class TranslocoPercentPipe\n  extends TranslocoLocalePipe\n  implements PipeTransform, OnDestroy {\n  transform(\n    value: number | string,\n    numberFormatOptions: NumberFormatOptions = {},\n    locale?: Locale\n  ): string;\n  ngOnDestroy(): void;\n}"
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "TranslocoDecimalPipe",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/pipes/transloco-decimal.pipe.ts#L9-L45",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "transform",
+              "info": {
+                "file": "projects/ngneat/transloco-locale/src/lib/pipes/transloco-decimal.pipe.ts#L31-L40",
+                "info": [
+                  [
+                    "description",
+                    {
+                      "__kind": "heading",
+                      "description": "Transform a given number into the locale's currency format.\n"
+                    }
+                  ],
+                  [
+                    "example",
+                    {
+                      "__kind": "heading",
+                      "description": "\n\n1234567890 | translocoDecimal: {} : en-US // 1,234,567,890\n1234567890 | translocoDecimal: {useGrouping: false}: en-US // 1234567890\n\n"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "value",
+                      "description": "",
+                      "type": "string | number"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "numberFormatOptions",
+                      "description": "",
+                      "type": "NumberFormatOptions"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "locale",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "transform(value: string | number, numberFormatOptions: NumberFormatOptions = {}, locale?: Locale): string;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "ngOnDestroy",
+              "info": {
+                "file": "projects/ngneat/transloco-locale/src/lib/pipes/transloco-decimal.pipe.ts#L42-L44",
+                "info": [],
+                "signature": "ngOnDestroy(): void;"
+              }
+            }
+          ]
+        ],
+        "signature": "class TranslocoDecimalPipe\n  extends TranslocoLocalePipe\n  implements PipeTransform, OnDestroy {\n  transform(\n    value: string | number,\n    numberFormatOptions: NumberFormatOptions = {},\n    locale?: Locale\n  ): string;\n  ngOnDestroy(): void;\n}"
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "TRANSLOCO_DATE_TRANSFORMER",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.transformers.ts#L5-L5",
+        "signature": "const TRANSLOCO_DATE_TRANSFORMER: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "TRANSLOCO_NUMBER_TRANSFORMER",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.transformers.ts#L6-L8",
+        "signature": "const TRANSLOCO_NUMBER_TRANSFORMER: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "TranslocoDateTransformer",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.transformers.ts#L10-L12",
+        "signature": "interface TranslocoDateTransformer {}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "TranslocoNumberTransformer",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.transformers.ts#L13-L15",
+        "signature": "interface TranslocoNumberTransformer {}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "DefaultDateTransformer",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.transformers.ts#L17-L21",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "transform",
+              "info": {
+                "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.transformers.ts#L18-L20",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "date",
+                      "description": "",
+                      "type": "Date"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "locale",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "options",
+                      "description": "",
+                      "type": "DateFormatOptions"
+                    }
+                  ]
+                ],
+                "signature": "public transform(date: Date, locale: Locale, options: DateFormatOptions): string;"
+              }
+            }
+          ]
+        ],
+        "signature": "class DefaultDateTransformer implements TranslocoDateTransformer {\n  public transform(\n    date: Date,\n    locale: Locale,\n    options: DateFormatOptions\n  ): string;\n}"
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "DefaultNumberTransformer",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.transformers.ts#L22-L31",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "transform",
+              "info": {
+                "file": "projects/ngneat/transloco-locale/src/lib/transloco-locale.transformers.ts#L23-L30",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "value",
+                      "description": "",
+                      "type": "string | number"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "type",
+                      "description": "",
+                      "type": "NumberTypes"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "locale",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "options",
+                      "description": "",
+                      "type": "Intl.NumberFormatOptions"
+                    }
+                  ]
+                ],
+                "signature": "public transform(  value: number | string,  type: NumberTypes,  locale: string,  options: Intl.NumberFormatOptions ): string;"
+              }
+            }
+          ]
+        ],
+        "signature": "class DefaultNumberTransformer implements TranslocoNumberTransformer {\n  public transform(\n    value: number | string,\n    type: NumberTypes,\n    locale: string,\n    options: Intl.NumberFormatOptions\n  ): string;\n}"
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "MessageFormatTranspiler",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-messageformat/src/lib/messageformat.transpiler.ts#L21-L67",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "transpile",
+              "info": {
+                "file": "projects/ngneat/transloco-messageformat/src/lib/messageformat.transpiler.ts#L36-L58",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "value",
+                      "description": "",
+                      "type": "any"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "params",
+                      "description": "",
+                      "type": "any"
+                    }
+                  ],
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "translation",
+                      "description": "",
+                      "type": "any"
+                    }
+                  ]
+                ],
+                "signature": "transpile(value: any, params: HashMap<any> = {}, translation: Translation): any;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "onLangChanged",
+              "info": {
+                "file": "projects/ngneat/transloco-messageformat/src/lib/messageformat.transpiler.ts#L60-L62",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "onLangChanged(lang: string);"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "setLocale",
+              "info": {
+                "file": "projects/ngneat/transloco-messageformat/src/lib/messageformat.transpiler.ts#L64-L66",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "locale",
+                      "description": "",
+                      "type": "MFLocale"
+                    }
+                  ]
+                ],
+                "signature": "setLocale(locale: MFLocale);"
+              }
+            }
+          ]
+        ],
+        "signature": "class MessageFormatTranspiler extends DefaultTranspiler {\n  transpile(\n    value: any,\n    params: HashMap<any> = {},\n    translation: Translation\n  ): any;\n  onLangChanged(lang: string);\n  setLocale(locale: MFLocale);\n}"
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "TRANSLOCO_MESSAGE_FORMAT_CONFIG",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-messageformat/src/lib/messageformat.config.ts#L5-L7",
+        "signature": "const TRANSLOCO_MESSAGE_FORMAT_CONFIG: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "MFLocale",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-messageformat/src/lib/messageformat.config.ts#L9-L9",
+        "signature": "export type MFLocale = { [locale: string]: Function } | string[] | string;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "MessageformatConfig",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-messageformat/src/lib/messageformat.config.ts#L11-L13",
+        "signature": "interface MessageformatConfig {\n  locales?: MFLocale;\n}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "TranslocoMessageFormatModule",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-messageformat/src/lib/messageformat.module.ts#L6-L22",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "init",
+              "info": {
+                "file": "projects/ngneat/transloco-messageformat/src/lib/messageformat.module.ts#L8-L19",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "config",
+                      "description": "",
+                      "type": "MessageformatConfig"
+                    }
+                  ]
+                ],
+                "signature": "static init(config?: MessageformatConfig): ModuleWithProviders<TranslocoMessageFormatModule>;"
+              }
+            }
+          ]
+        ],
+        "signature": "class TranslocoMessageFormatModule {\n  static init(\n    config?: MessageformatConfig\n  ): ModuleWithProviders<TranslocoMessageFormatModule>;\n}"
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "TranslocoPersistLangService",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-persist-lang/src/lib/persist-lang.service.ts#L18-L84",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "getCachedLang",
+              "info": {
+                "file": "projects/ngneat/transloco-persist-lang/src/lib/persist-lang.service.ts#L35-L37",
+                "info": [],
+                "signature": "getCachedLang(): string | null;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "clear",
+              "info": {
+                "file": "projects/ngneat/transloco-persist-lang/src/lib/persist-lang.service.ts#L39-L41",
+                "info": [],
+                "signature": "clear();"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "ngOnDestroy",
+              "info": {
+                "file": "projects/ngneat/transloco-persist-lang/src/lib/persist-lang.service.ts#L80-L82",
+                "info": [],
+                "signature": "ngOnDestroy();"
+              }
+            }
+          ]
+        ],
+        "signature": "class TranslocoPersistLangService implements OnDestroy {\n  getCachedLang(): string | null;\n  clear();\n  ngOnDestroy();\n}"
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "PersistLangConfig",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-persist-lang/src/lib/persist-lang.config.ts#L3-L7",
+        "signature": "export type PersistLangConfig = {\n  storage: Provider;\n  storageKey?: string;\n  getLangFn?: (langs: {\n    cachedLang: string;\n    browserLang: string;\n    cultureLang: string;\n    defaultLang: string;\n  }) => string;\n};",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "TRANSLOCO_PERSIST_LANG_STORAGE",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-persist-lang/src/lib/persist-lang.config.ts#L9-L9",
+        "signature": "const TRANSLOCO_PERSIST_LANG_STORAGE: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "TRANSLOCO_PERSIST_LANG_CONFIG",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-persist-lang/src/lib/persist-lang.config.ts#L10-L10",
+        "signature": "const TRANSLOCO_PERSIST_LANG_CONFIG: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "cookiesStorage",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-persist-lang/src/lib/cookie-storage.ts#L2-L18",
+        "signature": "function cookiesStorage(cookieExpiry = 720);",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "cookieExpiry",
+              "description": "",
+              "type": "number"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "TranslocoPersistLangModule",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-persist-lang/src/lib/persist-lang.module.ts#L5-L16",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "init",
+              "info": {
+                "file": "projects/ngneat/transloco-persist-lang/src/lib/persist-lang.module.ts#L7-L12",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "config",
+                      "description": "",
+                      "type": "PersistLangConfig"
+                    }
+                  ]
+                ],
+                "signature": "static init(config: PersistLangConfig): ModuleWithProviders<TranslocoPersistLangModule>;"
+              }
+            }
+          ]
+        ],
+        "signature": "class TranslocoPersistLangModule {\n  static init(\n    config: PersistLangConfig\n  ): ModuleWithProviders<TranslocoPersistLangModule>;\n}"
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "TranslocoPersistTranslationsConfig",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-persist-translations/src/lib/transloco-persist-translations.config.ts#L4-L9",
+        "signature": "export type TranslocoPersistTranslationsConfig = {\n  ttl?: number;\n  storageKey?: string;\n  loader: Type<TranslocoLoader>;\n  storage: Provider;\n};",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "defaultConfig",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-persist-translations/src/lib/transloco-persist-translations.config.ts#L11-L16",
+        "signature": "const defaultConfig: TranslocoPersistTranslationsConfig;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "PERSIST_TRANSLATIONS_LOADER",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-persist-translations/src/lib/transloco-persist-translations.config.ts#L18-L18",
+        "signature": "const PERSIST_TRANSLATIONS_LOADER: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "PERSIST_TRANSLATIONS_STORAGE",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-persist-translations/src/lib/transloco-persist-translations.config.ts#L19-L19",
+        "signature": "const PERSIST_TRANSLATIONS_STORAGE: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "PERSIST_TRANSLATIONS_CONFIG",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-persist-translations/src/lib/transloco-persist-translations.config.ts#L20-L20",
+        "signature": "const PERSIST_TRANSLATIONS_CONFIG: any;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "MaybeAsync",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-persist-translations/src/lib/transloco.storage.ts#L3-L3",
+        "signature": "export type MaybeAsync<T = any> = Promise<T> | Observable<T> | T;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "MaybeAsyncStorage",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-persist-translations/src/lib/transloco.storage.ts#L5-L11",
+        "signature": "interface MaybeAsyncStorage {}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "TranslocoPersistTranslations",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-persist-translations/src/lib/transloco-persist-translations.service.ts#L17-L123",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "getTranslation",
+              "info": {
+                "file": "projects/ngneat/transloco-persist-translations/src/lib/transloco-persist-translations.service.ts#L32-L45",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "lang",
+                      "description": "",
+                      "type": "string"
+                    }
+                  ]
+                ],
+                "signature": "getTranslation(lang: string): Observable<Translation>;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "clearCache",
+              "info": {
+                "file": "projects/ngneat/transloco-persist-translations/src/lib/transloco-persist-translations.service.ts#L47-L51",
+                "info": [],
+                "signature": "clearCache();"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "ngOnDestroy",
+              "info": {
+                "file": "projects/ngneat/transloco-persist-translations/src/lib/transloco-persist-translations.service.ts#L119-L121",
+                "info": [],
+                "signature": "ngOnDestroy();"
+              }
+            }
+          ]
+        ],
+        "signature": "class TranslocoPersistTranslations implements TranslocoLoader, OnDestroy {\n  getTranslation(lang: string): Observable<Translation>;\n  clearCache();\n  ngOnDestroy();\n}"
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "TranslocoPersistTranslationsModule",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-persist-translations/src/lib/transloco-persist-translations.module.ts#L10-L25",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "init",
+              "info": {
+                "file": "projects/ngneat/transloco-persist-translations/src/lib/transloco-persist-translations.module.ts#L12-L24",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "config",
+                      "description": "",
+                      "type": "Partial<TranslocoPersistTranslationsConfig>"
+                    }
+                  ]
+                ],
+                "signature": "static init(  config: Partial<TranslocoPersistTranslationsConfig> ): ModuleWithProviders<TranslocoPersistTranslationsModule>;"
+              }
+            }
+          ]
+        ],
+        "signature": "class TranslocoPersistTranslationsModule {\n  static init(\n    config: Partial<TranslocoPersistTranslationsConfig>\n  ): ModuleWithProviders<TranslocoPersistTranslationsModule>;\n}"
+      }
+    ]
+  },
+  {
+    "kind": "ClassDeclaration",
+    "module": "src",
+    "name": "TranslocoPreloadLangsModule",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-preload-langs/src/lib/transloco-preload-langs.module.ts#L33-L69",
+        "info": [
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "preload",
+              "info": {
+                "file": "projects/ngneat/transloco-preload-langs/src/lib/transloco-preload-langs.module.ts#L38-L43",
+                "info": [
+                  [
+                    "param",
+                    {
+                      "__kind": "table",
+                      "label": "langs",
+                      "description": "",
+                      "type": "string[]"
+                    }
+                  ]
+                ],
+                "signature": "static preload(langs: string[]): ModuleWithProviders<TranslocoPreloadLangsModule>;"
+              }
+            }
+          ],
+          [
+            "method",
+            {
+              "__kind": "info",
+              "header": "ngOnDestroy",
+              "info": {
+                "file": "projects/ngneat/transloco-preload-langs/src/lib/transloco-preload-langs.module.ts#L63-L68",
+                "info": [],
+                "signature": "ngOnDestroy();"
+              }
+            }
+          ]
+        ],
+        "signature": "class TranslocoPreloadLangsModule implements OnDestroy {\n  static preload(\n    langs: string[]\n  ): ModuleWithProviders<TranslocoPreloadLangsModule>;\n  ngOnDestroy();\n}"
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "getConfig",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-utils/src/lib/utils.ts#L4-L12",
+        "signature": "function getConfig(path?: string): TranslocoConfig;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "path",
+              "description": "",
+              "type": "string"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "TranslocoConfig",
+    "overloads": [
+      {
+        "file": "projects/ngneat/transloco-utils/src/lib/types.ts#L1-L15",
+        "signature": "interface TranslocoConfig {\n  rootTranslationsPath?: string;\n  defaultLang?: string;\n  scopedLibs?: string[];\n  scopePathMap?: { [key: string]: string };\n  langs?: string[];\n  keysManager?: {\n    input?: string | string[];\n    output?: string;\n    marker?: string;\n    addMissingKeys?: boolean;\n    replace?: boolean;\n    defaultValue?: string | undefined;\n  };\n}",
+        "info": []
+      }
+    ]
+  }
+]

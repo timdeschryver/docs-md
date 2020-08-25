@@ -1,0 +1,73 @@
+---
+kind: FunctionDeclaration
+name: window
+module: operators
+---
+
+# window
+
+## description
+
+Branch out the source Observable values as a nested Observable whenever
+`windowBoundaries` emits.
+
+<span class="informal">It's like {@link buffer}, but emits a nested Observable
+instead of an array.</span>
+
+![](window.png)
+
+Returns an Observable that emits windows of items it collects from the source
+Observable. The output Observable emits connected, non-overlapping
+windows. It emits the current window and opens a new one whenever the
+Observable `windowBoundaries` emits an item. Because each window is an
+Observable, the output is a higher-order Observable.
+
+## Example
+
+In every window of 1 second each, emit at most 2 click events
+
+```ts
+import { fromEvent, interval } from "rxjs";
+import { window, mergeAll, map, take } from "rxjs/operators";
+
+const clicks = fromEvent(document, "click");
+const sec = interval(1000);
+const result = clicks.pipe(
+  window(sec),
+  map((win) => win.pipe(take(2))), // each window has at most 2 emissions
+  mergeAll() // flatten the Observable-of-Observables
+);
+result.subscribe((x) => console.log(x));
+```
+
+```ts
+function window<T>(
+  windowBoundaries: Observable<any>
+): OperatorFunction<T, Observable<T>>;
+```
+
+[Link to repo](https://github.com/ReactiveX/rxjs/blob/master/src/internal/operators/window.ts#L51-L55)
+
+## see
+
+{@link windowCount}
+{@link windowTime}
+{@link windowToggle}
+{@link windowWhen}
+{@link buffer}
+
+## Parameters
+
+| Name              | Type              | Description                                       |
+| ----------------- | ----------------- | ------------------------------------------------- |
+| {Observable<any>} | ``                | windowBoundaries An Observable that completes the |
+| windowBoundaries  | `Observable<any>` |                                                   |
+
+## return
+
+{Observable<Observable<T>>} An Observable of windows, which are
+Observables emitting values of the source Observable.
+
+## name
+
+window

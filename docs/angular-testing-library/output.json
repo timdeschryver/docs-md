@@ -1,0 +1,1198 @@
+[
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "testing-library",
+    "name": "RenderResultQueries",
+    "overloads": [
+      {
+        "file": "projects/testing-library/src/lib/models.ts#L7-L7",
+        "signature": "export type RenderResultQueries<Q extends Queries = typeof queries> = {\n  [P in keyof Q]: BoundFunction<Q[P]>;\n};",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "testing-library",
+    "name": "RenderResult",
+    "overloads": [
+      {
+        "file": "projects/testing-library/src/lib/models.ts#L8-L61",
+        "signature": "interface RenderResult<ComponentType, WrapperType = ComponentType> {\n  container: HTMLElement;\n  debug: (\n    element?: Element | HTMLDocument | (Element | HTMLDocument)[],\n    maxLength?: number,\n    options?: OptionsReceived\n  ) => void;\n  detectChanges: () => void;\n  debugElement: DebugElement;\n  fixture: ComponentFixture<WrapperType>;\n  navigate: (\n    elementOrPath: Element | string,\n    basePath?: string\n  ) => Promise<boolean>;\n  rerender: (componentProperties: Partial<ComponentType>) => void;\n}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "testing-library",
+    "name": "RenderComponentOptions",
+    "overloads": [
+      {
+        "file": "projects/testing-library/src/lib/models.ts#L63-L251",
+        "signature": "interface RenderComponentOptions<\n  ComponentType,\n  Q extends Queries = typeof queries\n> {\n  detectChanges?: boolean;\n  declarations?: any[];\n  providers?: any[];\n  imports?: any[];\n  schemas?: any[];\n  componentProperties?: Partial<ComponentType>;\n  componentProviders?: any[];\n  queries?: Q;\n  excludeComponentDeclaration?: boolean;\n  routes?: Routes;\n  removeAngularAttributes?: boolean;\n}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "testing-library",
+    "name": "RenderDirectiveOptions",
+    "overloads": [
+      {
+        "file": "projects/testing-library/src/lib/models.ts#L253-L282",
+        "signature": "interface RenderDirectiveOptions<\n  DirectiveType,\n  WrapperType,\n  Q extends Queries = typeof queries\n> {\n  template: string;\n  wrapper?: Type<WrapperType>;\n  componentProperties?: Partial<any>;\n\n  // inherited from RenderComponentOptions\n  detectChanges?: boolean;\n  declarations?: any[];\n  providers?: any[];\n  imports?: any[];\n  schemas?: any[];\n  componentProperties?: Partial<ComponentType>;\n  componentProviders?: any[];\n  queries?: Q;\n  excludeComponentDeclaration?: boolean;\n  routes?: Routes;\n  removeAngularAttributes?: boolean;\n}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "testing-library",
+    "name": "Config",
+    "overloads": [
+      {
+        "file": "projects/testing-library/src/lib/models.ts#L284-L287",
+        "signature": "interface Config {\n  defaultImports: any[];\n  dom: Partial<dtlConfig>;\n}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "testing-library",
+    "name": "configure",
+    "overloads": [
+      {
+        "file": "projects/testing-library/src/lib/config.ts#L8-L20",
+        "signature": "function configure(\n  newConfig: Partial<Config> | ((config: Partial<Config>) => Partial<Config>)\n);",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "newConfig",
+              "description": "",
+              "type": "Partial<Config> | ((config: Partial<Config>) => Partial<Config>)"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "testing-library",
+    "name": "getConfig",
+    "overloads": [
+      {
+        "file": "projects/testing-library/src/lib/config.ts#L22-L24",
+        "signature": "function getConfig();",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "testing-library",
+    "name": "render",
+    "overloads": [
+      {
+        "file": "projects/testing-library/src/lib/testing-library.ts#L31-L175",
+        "signature": "async function render<SutType, WrapperType = SutType>(\n  sut: Type<SutType>,\n  renderOptions:\n    | RenderComponentOptions<SutType>\n    | RenderDirectiveOptions<SutType, WrapperType> = {}\n): Promise<RenderResult<SutType>>;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "sut",
+              "description": "",
+              "type": "Type<SutType>"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "renderOptions",
+              "description": "",
+              "type": "RenderComponentOptions<SutType, typeof dtlQueries> | RenderDirectiveOptions<SutType, WrapperType, typeof dtlQueries>"
+            }
+          ]
+        ]
+      },
+      {
+        "file": "projects/testing-library/src/lib/testing-library.ts#L22-L25",
+        "signature": "async function render<ComponentType>(\n  component: Type<ComponentType>,\n  renderOptions?: RenderComponentOptions<ComponentType>\n): Promise<RenderResult<ComponentType, ComponentType>>;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "component",
+              "description": "",
+              "type": "Type<ComponentType>"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "renderOptions",
+              "description": "",
+              "type": "RenderComponentOptions<ComponentType, typeof dtlQueries>"
+            }
+          ]
+        ]
+      },
+      {
+        "file": "projects/testing-library/src/lib/testing-library.ts#L26-L29",
+        "signature": "async function render<DirectiveType, WrapperType = WrapperComponent>(\n  component: Type<DirectiveType>,\n  renderOptions?: RenderDirectiveOptions<DirectiveType, WrapperType>\n): Promise<RenderResult<DirectiveType, WrapperType>>;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "component",
+              "description": "",
+              "type": "Type<DirectiveType>"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "renderOptions",
+              "description": "",
+              "type": "RenderDirectiveOptions<DirectiveType, WrapperType, typeof dtlQueries>"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "fireEvent",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/events.d.ts#L110-L110",
+        "signature": "const fireEvent: FireFunction & FireObject;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "testing-library",
+    "name": "buildQueries",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/query-helpers.d.ts#L58-L62",
+        "signature": "function buildQueries<Arguments extends any[]>(\n  queryByAll: GetAllBy<Arguments>,\n  getMultipleError: (container: HTMLElement, ...args: Arguments) => string,\n  getMissingError: (container: HTMLElement, ...args: Arguments) => string\n): BuiltQueryMethods<Arguments>;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "queryByAll",
+              "description": "",
+              "type": "QueryMethod<Arguments, HTMLElement[]>"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "getMultipleError",
+              "description": "",
+              "type": "(container: HTMLElement, ...args: Arguments) => string"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "getMissingError",
+              "description": "",
+              "type": "(container: HTMLElement, ...args: Arguments) => string"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "getByLabelText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L92-L92",
+        "signature": "const getByLabelText: GetByText;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "getAllByLabelText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L93-L93",
+        "signature": "const getAllByLabelText: AllByText;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "queryByLabelText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L94-L94",
+        "signature": "const queryByLabelText: QueryByText;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "queryAllByLabelText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L95-L95",
+        "signature": "const queryAllByLabelText: AllByText;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "findByLabelText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L96-L96",
+        "signature": "const findByLabelText: FindByText;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "findAllByLabelText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L97-L97",
+        "signature": "const findAllByLabelText: FindAllByText;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "getByPlaceholderText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L98-L98",
+        "signature": "const getByPlaceholderText: GetByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "getAllByPlaceholderText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L99-L99",
+        "signature": "const getAllByPlaceholderText: AllByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "queryByPlaceholderText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L100-L100",
+        "signature": "const queryByPlaceholderText: QueryByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "queryAllByPlaceholderText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L101-L101",
+        "signature": "const queryAllByPlaceholderText: AllByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "findByPlaceholderText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L102-L102",
+        "signature": "const findByPlaceholderText: FindByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "findAllByPlaceholderText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L103-L103",
+        "signature": "const findAllByPlaceholderText: FindAllByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "getByText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L104-L104",
+        "signature": "const getByText: GetByText;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "getAllByText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L105-L105",
+        "signature": "const getAllByText: AllByText;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "queryByText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L106-L106",
+        "signature": "const queryByText: QueryByText;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "queryAllByText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L107-L107",
+        "signature": "const queryAllByText: AllByText;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "findByText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L108-L108",
+        "signature": "const findByText: FindByText;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "findAllByText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L109-L109",
+        "signature": "const findAllByText: FindAllByText;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "getByAltText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L110-L110",
+        "signature": "const getByAltText: GetByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "getAllByAltText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L111-L111",
+        "signature": "const getAllByAltText: AllByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "queryByAltText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L112-L112",
+        "signature": "const queryByAltText: QueryByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "queryAllByAltText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L113-L113",
+        "signature": "const queryAllByAltText: AllByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "findByAltText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L114-L114",
+        "signature": "const findByAltText: FindByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "findAllByAltText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L115-L115",
+        "signature": "const findAllByAltText: FindAllByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "getByTitle",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L116-L116",
+        "signature": "const getByTitle: GetByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "getAllByTitle",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L117-L117",
+        "signature": "const getAllByTitle: AllByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "queryByTitle",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L118-L118",
+        "signature": "const queryByTitle: QueryByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "queryAllByTitle",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L119-L119",
+        "signature": "const queryAllByTitle: AllByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "findByTitle",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L120-L120",
+        "signature": "const findByTitle: FindByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "findAllByTitle",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L121-L121",
+        "signature": "const findAllByTitle: FindAllByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "getByDisplayValue",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L122-L122",
+        "signature": "const getByDisplayValue: GetByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "getAllByDisplayValue",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L123-L123",
+        "signature": "const getAllByDisplayValue: AllByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "queryByDisplayValue",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L124-L124",
+        "signature": "const queryByDisplayValue: QueryByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "queryAllByDisplayValue",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L125-L125",
+        "signature": "const queryAllByDisplayValue: AllByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "findByDisplayValue",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L126-L126",
+        "signature": "const findByDisplayValue: FindByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "findAllByDisplayValue",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L127-L127",
+        "signature": "const findAllByDisplayValue: FindAllByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "getByRole",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L128-L128",
+        "signature": "const getByRole: GetByRole;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "getAllByRole",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L129-L129",
+        "signature": "const getAllByRole: AllByRole;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "queryByRole",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L130-L130",
+        "signature": "const queryByRole: QueryByRole;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "queryAllByRole",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L131-L131",
+        "signature": "const queryAllByRole: AllByRole;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "findByRole",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L132-L132",
+        "signature": "const findByRole: FindByRole;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "findAllByRole",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L133-L133",
+        "signature": "const findAllByRole: FindAllByRole;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "getByTestId",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L134-L134",
+        "signature": "const getByTestId: GetByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "getAllByTestId",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L135-L135",
+        "signature": "const getAllByTestId: AllByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "queryByTestId",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L136-L136",
+        "signature": "const queryByTestId: QueryByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "queryAllByTestId",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L137-L137",
+        "signature": "const queryAllByTestId: AllByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "findByTestId",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L138-L138",
+        "signature": "const findByTestId: FindByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "findAllByTestId",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/queries.d.ts#L139-L139",
+        "signature": "const findAllByTestId: FindAllByBoundAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "createEvent",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/events.d.ts#L109-L109",
+        "signature": "const createEvent: CreateObject;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "testing-library",
+    "name": "getDefaultNormalizer",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/matches.d.ts#L29-L31",
+        "signature": "function getDefaultNormalizer(options?: DefaultNormalizerOptions): NormalizerFn;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "options",
+              "description": "",
+              "type": "DefaultNormalizerOptions"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "testing-library",
+    "name": "getElementError",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/query-helpers.d.ts#L24-L24",
+        "signature": "function getElementError(message: string, container: HTMLElement): Error;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "message",
+              "description": "",
+              "type": "string"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "container",
+              "description": "",
+              "type": "HTMLElement"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "testing-library",
+    "name": "getNodeText",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/get-node-text.d.ts#L1-L1",
+        "signature": "function getNodeText(node: HTMLElement): string;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "node",
+              "description": "",
+              "type": "HTMLElement"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "testing-library",
+    "name": "getQueriesForElement",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/get-queries-for-element.d.ts#L26-L29",
+        "signature": "function getQueriesForElement<T extends Queries = typeof queries>(\n  element: HTMLElement,\n  queriesToBind?: T\n): BoundFunctions<T>;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "element",
+              "description": "",
+              "type": "HTMLElement"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "queriesToBind",
+              "description": "",
+              "type": "T"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "testing-library",
+    "name": "getRoles",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/role-helpers.d.ts#L2-L2",
+        "signature": "function getRoles(container: HTMLElement): { [index: string]: HTMLElement[] };",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "container",
+              "description": "",
+              "type": "HTMLElement"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "testing-library",
+    "name": "isInaccessible",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/role-helpers.d.ts#L6-L6",
+        "signature": "function isInaccessible(element: Element): boolean;",
+        "info": [
+          [
+            "description",
+            {
+              "__kind": "heading",
+              "description": "https://testing-library.com/docs/dom-testing-library/api-helpers#isinaccessible\n"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "element",
+              "description": "",
+              "type": "Element"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "testing-library",
+    "name": "logDOM",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/pretty-dom.d.ts#L4-L4",
+        "signature": "function logDOM(\n  dom?: Element | HTMLDocument,\n  maxLength?: number,\n  options?: OptionsReceived\n): void;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "dom",
+              "description": "",
+              "type": "Element | HTMLDocument"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "maxLength",
+              "description": "",
+              "type": "number"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "options",
+              "description": "",
+              "type": "import(\"C:/Users/tdeschryver/dev/libs/angular-testing-library/node_modules/@testing-library/dom/node_modules/pretty-format/build/types\").OptionsReceived"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "testing-library",
+    "name": "logRoles",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/role-helpers.d.ts#L1-L1",
+        "signature": "function logRoles(container: HTMLElement): string;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "container",
+              "description": "",
+              "type": "HTMLElement"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "testing-library",
+    "name": "prettyDOM",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/pretty-dom.d.ts#L3-L3",
+        "signature": "function prettyDOM(\n  dom?: Element | HTMLDocument,\n  maxLength?: number,\n  options?: OptionsReceived\n): string | false;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "dom",
+              "description": "",
+              "type": "Element | HTMLDocument"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "maxLength",
+              "description": "",
+              "type": "number"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "options",
+              "description": "",
+              "type": "import(\"C:/Users/tdeschryver/dev/libs/angular-testing-library/node_modules/@testing-library/dom/node_modules/pretty-format/build/types\").OptionsReceived"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "queryAllByAttribute",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/query-helpers.d.ts#L23-L23",
+        "signature": "const queryAllByAttribute: AllByAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "queryByAttribute",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/query-helpers.d.ts#L22-L22",
+        "signature": "const queryByAttribute: QueryByAttribute;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "within",
+    "overloads": [
+      {
+        "file": "node_modules/@testing-library/dom/types/index.d.ts#L7-L7",
+        "signature": "const within: typeof getQueriesForElement;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "testing-library",
+    "name": "screen",
+    "overloads": [
+      {
+        "file": "projects/testing-library/src/lib/testing-library.ts#L357-L357",
+        "signature": "const screen: import(\"C:/Users/tdeschryver/dev/libs/angular-testing-library/node_modules/@testing-library/dom/types/screen\").Screen<typeof dtlQueries>;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "testing-library",
+    "name": "waitFor",
+    "overloads": [
+      {
+        "file": "projects/testing-library/src/lib/testing-library.ts#L362-L364",
+        "signature": "async function waitFor<T>(\n  callback: () => T extends Promise<any> ? never : T,\n  options?: dtlWaitForOptions\n): Promise<T>;",
+        "info": [
+          [
+            "description",
+            {
+              "__kind": "heading",
+              "description": "Re-export waitFor with patched waitFor\n"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "callback",
+              "description": "",
+              "type": "() => T extends Promise<any> ? never : T"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "options",
+              "description": "",
+              "type": "dtlWaitForOptions"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "testing-library",
+    "name": "waitForElementToBeRemoved",
+    "overloads": [
+      {
+        "file": "projects/testing-library/src/lib/testing-library.ts#L369-L371",
+        "signature": "async function waitForElementToBeRemoved<T>(\n  callback: (() => T) | T,\n  options?: dtlWaitForOptions\n): Promise<void>;",
+        "info": [
+          [
+            "description",
+            {
+              "__kind": "heading",
+              "description": "Re-export waitForElementToBeRemoved with patched waitForElementToBeRemoved\n"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "callback",
+              "description": "",
+              "type": "(() => T) | T"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "options",
+              "description": "",
+              "type": "dtlWaitForOptions"
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]

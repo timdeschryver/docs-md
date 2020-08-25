@@ -1,0 +1,72 @@
+---
+kind: FunctionDeclaration
+name: bufferToggle
+module: operators
+---
+
+# bufferToggle
+
+## description
+
+Buffers the source Observable values starting from an emission from
+`openings` and ending when the output of `closingSelector` emits.
+
+<span class="informal">Collects values from the past as an array. Starts
+collecting only when `opening` emits, and calls the `closingSelector`
+function to get an Observable that tells when to close the buffer.</span>
+
+![](bufferToggle.png)
+
+Buffers values from the source by opening the buffer via signals from an
+Observable provided to `openings`, and closing and sending the buffers when
+a Subscribable or Promise returned by the `closingSelector` function emits.
+
+## Example
+
+Every other second, emit the click events from the next 500ms
+
+```ts
+import { fromEvent, interval, EMPTY } from "rxjs";
+import { bufferToggle } from "rxjs/operators";
+
+const clicks = fromEvent(document, "click");
+const openings = interval(1000);
+const buffered = clicks.pipe(
+  bufferToggle(openings, (i) => (i % 2 ? interval(500) : EMPTY))
+);
+buffered.subscribe((x) => console.log(x));
+```
+
+```ts
+function bufferToggle<T, O>(
+  openings: SubscribableOrPromise<O>,
+  closingSelector: (value: O) => SubscribableOrPromise<any>
+): OperatorFunction<T, T[]>;
+```
+
+[Link to repo](https://github.com/ReactiveX/rxjs/blob/master/src/internal/operators/bufferToggle.ts#L54-L61)
+
+## see
+
+{@link buffer}
+{@link bufferCount}
+{@link bufferTime}
+{@link bufferWhen}
+{@link windowToggle}
+
+## Parameters
+
+| Name                       | Type                                       | Description                                                      |
+| -------------------------- | ------------------------------------------ | ---------------------------------------------------------------- |
+| {SubscribableOrPromise<O>} | ``                                         | openings A Subscribable or Promise of notifications to start new |
+| {function(value:           | ``                                         | O): SubscribableOrPromise} closingSelector A function that takes |
+| openings                   | `SubscribableOrPromise<O>`                 |                                                                  |
+| closingSelector            | `(value: O) => SubscribableOrPromise<any>` |                                                                  |
+
+## return
+
+{Observable<T[]>} An observable of arrays of buffered values.
+
+## name
+
+bufferToggle

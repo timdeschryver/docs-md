@@ -1,0 +1,315 @@
+---
+kind: FunctionDeclaration
+name: concat
+module: src
+---
+
+# concat
+
+## description
+
+Creates an output Observable which sequentially emits all values from the first given
+Observable and then moves on to the next.
+
+<span class="informal">Concatenates multiple Observables together by
+sequentially emitting their values, one Observable after the other.</span>
+
+![](concat.png)
+
+`concat` joins multiple Observables together, by subscribing to them one at a time and
+merging their results into the output Observable. You can pass either an array of
+Observables, or put them directly as arguments. Passing an empty array will result
+in Observable that completes immediately.
+
+`concat` will subscribe to first input Observable and emit all its values, without
+changing or affecting them in any way. When that Observable completes, it will
+subscribe to then next Observable passed and, again, emit its values. This will be
+repeated, until the operator runs out of Observables. When last input Observable completes,
+`concat` will complete as well. At any given moment only one Observable passed to operator
+emits values. If you would like to emit values from passed Observables concurrently, check out
+{@link merge} instead, especially with optional `concurrent` parameter. As a matter of fact,
+`concat` is an equivalent of `merge` operator with `concurrent` parameter set to `1`.
+
+Note that if some input Observable never completes, `concat` will also never complete
+and Observables following the one that did not complete will never be subscribed. On the other
+hand, if some Observable simply completes immediately after it is subscribed, it will be
+invisible for `concat`, which will just move on to the next Observable.
+
+If any Observable in chain errors, instead of passing control to the next Observable,
+`concat` will error immediately as well. Observables that would be subscribed after
+the one that emitted error, never will.
+
+If you pass to `concat` the same Observable many times, its stream of values
+will be "replayed" on every subscription, which means you can repeat given Observable
+as many times as you like. If passing the same Observable to `concat` 1000 times becomes tedious,
+you can always use {@link repeat}.
+
+## Examples
+
+### Concatenate a timer counting from 0 to 3 with a synchronous sequence from 1 to 10
+
+```ts
+import { concat, interval, range } from "rxjs";
+import { take } from "rxjs/operators";
+
+const timer = interval(1000).pipe(take(4));
+const sequence = range(1, 10);
+const result = concat(timer, sequence);
+result.subscribe((x) => console.log(x));
+
+// results in:
+// 0 -1000ms-> 1 -1000ms-> 2 -1000ms-> 3 -immediate-> 1 ... 10
+```
+
+### Concatenate 3 Observables
+
+```ts
+import { concat, interval } from "rxjs";
+import { take } from "rxjs/operators";
+
+const timer1 = interval(1000).pipe(take(10));
+const timer2 = interval(2000).pipe(take(6));
+const timer3 = interval(500).pipe(take(10));
+
+const result = concat(timer1, timer2, timer3);
+result.subscribe((x) => console.log(x));
+
+// results in the following:
+// (Prints to console sequentially)
+// -1000ms-> 0 -1000ms-> 1 -1000ms-> ... 9
+// -2000ms-> 0 -2000ms-> 1 -2000ms-> ... 5
+// -500ms-> 0 -500ms-> 1 -500ms-> ... 9
+```
+
+### Concatenate the same Observable to repeat it
+
+```ts
+import { concat, interval } from "rxjs";
+import { take } from "rxjs/operators";
+
+const timer = interval(1000).pipe(take(2));
+
+concat(timer, timer) // concatenating the same Observable!
+  .subscribe(
+    (value) => console.log(value),
+    (err) => {},
+    () => console.log("...and it is done!")
+  );
+
+// Logs:
+// 0 after 1s
+// 1 after 2s
+// 0 after 3s
+// 1 after 4s
+// "...and it is done!" also after 4s
+```
+
+```ts
+function concat<O extends ObservableInput<any>>(
+  ...observables: Array<O | SchedulerLike>
+): Observable<ObservedValueOf<O>>;
+```
+
+[Link to repo](https://github.com/ReactiveX/rxjs/blob/master/src/internal/observable/concat.ts#L128-L131)
+
+## see
+
+{@link concatAll}
+{@link concatMap}
+{@link concatMapTo}
+{@link startWith}
+{@link endWith}
+
+## Parameters
+
+| Name        | Type | Description                                        |
+| ----------- | ---- | -------------------------------------------------- |
+| input1      | ``   | An input Observable to concatenate with others.    |
+| input2      | ``   | An input Observable to concatenate with others.    |
+| scheduler   | ``   | An optional {@link SchedulerLike} to schedule each |
+| observables | `(O  | SchedulerLike)[]`                                  |  |
+
+## Overloads
+
+```ts
+function concat<O1 extends ObservableInput<any>>(
+  v1: O1,
+  scheduler: SchedulerLike
+): Observable<ObservedValueOf<O1>>;
+```
+
+[Link to repo](https://github.com/ReactiveX/rxjs/blob/master/src/internal/observable/concat.ts#L8-L8)
+
+### Parameters
+
+| Name      | Type            | Description |
+| --------- | --------------- | ----------- |
+| v1        | `O1`            |             |
+| scheduler | `SchedulerLike` |             |
+
+```ts
+function concat<
+  O1 extends ObservableInput<any>,
+  O2 extends ObservableInput<any>
+>(
+  v1: O1,
+  v2: O2,
+  scheduler: SchedulerLike
+): Observable<ObservedValueOf<O1> | ObservedValueOf<O2>>;
+```
+
+[Link to repo](https://github.com/ReactiveX/rxjs/blob/master/src/internal/observable/concat.ts#L10-L10)
+
+### Parameters
+
+| Name      | Type            | Description |
+| --------- | --------------- | ----------- |
+| v1        | `O1`            |             |
+| v2        | `O2`            |             |
+| scheduler | `SchedulerLike` |             |
+
+```ts
+function concat<
+  O1 extends ObservableInput<any>,
+  O2 extends ObservableInput<any>,
+  O3 extends ObservableInput<any>
+>(
+  v1: O1,
+  v2: O2,
+  v3: O3,
+  scheduler: SchedulerLike
+): Observable<ObservedValueOf<O1> | ObservedValueOf<O2> | ObservedValueOf<O3>>;
+```
+
+[Link to repo](https://github.com/ReactiveX/rxjs/blob/master/src/internal/observable/concat.ts#L12-L12)
+
+### Parameters
+
+| Name      | Type            | Description |
+| --------- | --------------- | ----------- |
+| v1        | `O1`            |             |
+| v2        | `O2`            |             |
+| v3        | `O3`            |             |
+| scheduler | `SchedulerLike` |             |
+
+```ts
+function concat<
+  O1 extends ObservableInput<any>,
+  O2 extends ObservableInput<any>,
+  O3 extends ObservableInput<any>,
+  O4 extends ObservableInput<any>
+>(
+  v1: O1,
+  v2: O2,
+  v3: O3,
+  v4: O4,
+  scheduler: SchedulerLike
+): Observable<
+  | ObservedValueOf<O1>
+  | ObservedValueOf<O2>
+  | ObservedValueOf<O3>
+  | ObservedValueOf<O4>
+>;
+```
+
+[Link to repo](https://github.com/ReactiveX/rxjs/blob/master/src/internal/observable/concat.ts#L14-L14)
+
+### Parameters
+
+| Name      | Type            | Description |
+| --------- | --------------- | ----------- |
+| v1        | `O1`            |             |
+| v2        | `O2`            |             |
+| v3        | `O3`            |             |
+| v4        | `O4`            |             |
+| scheduler | `SchedulerLike` |             |
+
+```ts
+function concat<
+  O1 extends ObservableInput<any>,
+  O2 extends ObservableInput<any>,
+  O3 extends ObservableInput<any>,
+  O4 extends ObservableInput<any>,
+  O5 extends ObservableInput<any>
+>(
+  v1: O1,
+  v2: O2,
+  v3: O3,
+  v4: O4,
+  v5: O5,
+  scheduler: SchedulerLike
+): Observable<
+  | ObservedValueOf<O1>
+  | ObservedValueOf<O2>
+  | ObservedValueOf<O3>
+  | ObservedValueOf<O4>
+  | ObservedValueOf<O5>
+>;
+```
+
+[Link to repo](https://github.com/ReactiveX/rxjs/blob/master/src/internal/observable/concat.ts#L16-L16)
+
+### Parameters
+
+| Name      | Type            | Description |
+| --------- | --------------- | ----------- |
+| v1        | `O1`            |             |
+| v2        | `O2`            |             |
+| v3        | `O3`            |             |
+| v4        | `O4`            |             |
+| v5        | `O5`            |             |
+| scheduler | `SchedulerLike` |             |
+
+```ts
+function concat<
+  O1 extends ObservableInput<any>,
+  O2 extends ObservableInput<any>,
+  O3 extends ObservableInput<any>,
+  O4 extends ObservableInput<any>,
+  O5 extends ObservableInput<any>,
+  O6 extends ObservableInput<any>
+>(
+  v1: O1,
+  v2: O2,
+  v3: O3,
+  v4: O4,
+  v5: O5,
+  v6: O6,
+  scheduler: SchedulerLike
+): Observable<
+  | ObservedValueOf<O1>
+  | ObservedValueOf<O2>
+  | ObservedValueOf<O3>
+  | ObservedValueOf<O4>
+  | ObservedValueOf<O5>
+  | ObservedValueOf<O6>
+>;
+```
+
+[Link to repo](https://github.com/ReactiveX/rxjs/blob/master/src/internal/observable/concat.ts#L18-L18)
+
+### Parameters
+
+| Name      | Type            | Description |
+| --------- | --------------- | ----------- |
+| v1        | `O1`            |             |
+| v2        | `O2`            |             |
+| v3        | `O3`            |             |
+| v4        | `O4`            |             |
+| v5        | `O5`            |             |
+| v6        | `O6`            |             |
+| scheduler | `SchedulerLike` |             |
+
+```ts
+function concat<A extends ObservableInput<any>[]>(
+  ...observables: A
+): Observable<ObservedValueUnionFromArray<A>>;
+```
+
+[Link to repo](https://github.com/ReactiveX/rxjs/blob/master/src/internal/observable/concat.ts#L20-L20)
+
+### Parameters
+
+| Name        | Type | Description |
+| ----------- | ---- | ----------- |
+| observables | `A`  |             |

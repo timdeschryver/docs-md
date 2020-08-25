@@ -1,0 +1,314 @@
+[
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "setupWorker",
+    "overloads": [
+      {
+        "file": "src/setupWorker/setupWorker.ts#L42-L125",
+        "signature": "function setupWorker(...requestHandlers: RequestHandlersList): SetupWorkerApi;",
+        "info": [
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "requestHandlers",
+              "description": "",
+              "type": "RequestHandlersList"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "MockedResponse",
+    "overloads": [
+      {
+        "file": "src/response.ts#L5-L12",
+        "signature": "interface MockedResponse {\n  body: any;\n  status: number;\n  statusText: string;\n  headers: Headers;\n  once: boolean;\n  delay?: number;\n}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "ResponseTransformer",
+    "overloads": [
+      {
+        "file": "src/response.ts#L14-L14",
+        "signature": "export type ResponseTransformer = (res: MockedResponse) => MockedResponse;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "response",
+    "overloads": [
+      {
+        "file": "src/response.ts#L58-L66",
+        "signature": "const response: ResponseComposition;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "MockedRequest",
+    "overloads": [
+      {
+        "file": "src/utils/handlers/requestHandler.ts#L16-L33",
+        "signature": "interface MockedRequest {\n  url: URL;\n  method: Request[\"method\"];\n  headers: Headers;\n  cookies: Record<string, string>;\n  mode: Request[\"mode\"];\n  keepalive: Request[\"keepalive\"];\n  cache: Request[\"cache\"];\n  destination: Request[\"destination\"];\n  integrity: Request[\"integrity\"];\n  credentials: Request[\"credentials\"];\n  redirect: Request[\"redirect\"];\n  referrer: Request[\"referrer\"];\n  referrerPolicy: Request[\"referrerPolicy\"];\n  body: Record<string, any> | string | undefined;\n  bodyUsed: Request[\"bodyUsed\"];\n  params: RequestParams;\n}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "RequestHandler",
+    "overloads": [
+      {
+        "file": "src/utils/handlers/requestHandler.ts#L57-L109",
+        "signature": "interface RequestHandler<\n  RequestType = MockedRequest,\n  ContextType = typeof defaultContext,\n  ParsedRequest = any,\n  PublicRequest = RequestType\n> {\n  parse?: (req: RequestType) => ParsedRequest | null;\n  getPublicRequest?: (\n    req: RequestType,\n    parsedRequest: ParsedRequest\n  ) => PublicRequest;\n  predicate: (req: RequestType, parsedRequest: ParsedRequest) => boolean;\n  resolver: ResponseResolver<RequestType, ContextType>;\n  defineContext?: (req: PublicRequest) => ContextType;\n  log: (\n    req: PublicRequest,\n    res: ResponseWithSerializedHeaders,\n    handler: RequestHandler<RequestType, ContextType>,\n    parsedRequest: ParsedRequest\n  ) => void;\n  shouldSkip?: boolean;\n}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "RequestParams",
+    "overloads": [
+      {
+        "file": "src/utils/handlers/requestHandler.ts#L39-L41",
+        "signature": "export type RequestParams = {\n  [paramName: string]: any;\n};",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "RequestQuery",
+    "overloads": [
+      {
+        "file": "src/utils/handlers/requestHandler.ts#L35-L37",
+        "signature": "export type RequestQuery = {\n  [queryName: string]: any;\n};",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "ResponseResolver",
+    "overloads": [
+      {
+        "file": "src/utils/handlers/requestHandler.ts#L48-L55",
+        "signature": "export type ResponseResolver<\n  RequestType = MockedRequest,\n  ContextType = typeof defaultContext\n> = (\n  req: RequestType,\n  res: ResponseComposition,\n  context: ContextType\n) => AsyncResponseResolverReturnType<MockedResponse>;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "ResponseResolverReturnType",
+    "overloads": [
+      {
+        "file": "src/utils/handlers/requestHandler.ts#L43-L43",
+        "signature": "export type ResponseResolverReturnType<R> = R | undefined | void;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "AsyncResponseResolverReturnType",
+    "overloads": [
+      {
+        "file": "src/utils/handlers/requestHandler.ts#L44-L46",
+        "signature": "export type AsyncResponseResolverReturnType<R> =\n  | Promise<ResponseResolverReturnType<R>>\n  | ResponseResolverReturnType<R>;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "defaultContext",
+    "overloads": [
+      {
+        "file": "src/utils/handlers/requestHandler.ts#L9-L14",
+        "signature": "const defaultContext: {\n  status: (\n    statusCode: number,\n    statusText?: string\n  ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n  set: typeof set;\n  delay: (\n    durationMs?: number\n  ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n  fetch: <ResponseType = any>(\n    input: string | MockedRequest,\n    requestInit?: RequestInit\n  ) => Promise<ResponseType>;\n};",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "rest",
+    "overloads": [
+      {
+        "file": "src/rest.ts#L139-L146",
+        "signature": "const rest: {\n  get: (\n    mask: Mask,\n    resolver: ResponseResolver<\n      MockedRequest,\n      {\n        set: typeof set;\n        status: (\n          statusCode: number,\n          statusText?: string\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        cookie: (\n          name: string,\n          value: string,\n          options?: any\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        body: <T>(\n          value: T\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        text: (\n          body: string\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        json: (\n          body: Record<string, any>\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        xml: (\n          body: string\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        delay: (\n          durationMs?: number\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        fetch: <ResponseType = any>(\n          input: string | MockedRequest,\n          requestInit?: RequestInit\n        ) => Promise<ResponseType>;\n      }\n    >\n  ) => RequestHandler<\n    MockedRequest,\n    {\n      set: typeof set;\n      status: (\n        statusCode: number,\n        statusText?: string\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      cookie: (\n        name: string,\n        value: string,\n        options?: any\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      body: <T>(\n        value: T\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      text: (\n        body: string\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      json: (\n        body: Record<string, any>\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      xml: (\n        body: string\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      delay: (\n        durationMs?: number\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      fetch: <ResponseType = any>(\n        input: string | MockedRequest,\n        requestInit?: RequestInit\n      ) => Promise<ResponseType>;\n    },\n    ParsedRestRequest,\n    MockedRequest\n  >;\n  post: (\n    mask: Mask,\n    resolver: ResponseResolver<\n      MockedRequest,\n      {\n        set: typeof set;\n        status: (\n          statusCode: number,\n          statusText?: string\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        cookie: (\n          name: string,\n          value: string,\n          options?: any\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        body: <T>(\n          value: T\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        text: (\n          body: string\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        json: (\n          body: Record<string, any>\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        xml: (\n          body: string\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        delay: (\n          durationMs?: number\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        fetch: <ResponseType = any>(\n          input: string | MockedRequest,\n          requestInit?: RequestInit\n        ) => Promise<ResponseType>;\n      }\n    >\n  ) => RequestHandler<\n    MockedRequest,\n    {\n      set: typeof set;\n      status: (\n        statusCode: number,\n        statusText?: string\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      cookie: (\n        name: string,\n        value: string,\n        options?: any\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      body: <T>(\n        value: T\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      text: (\n        body: string\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      json: (\n        body: Record<string, any>\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      xml: (\n        body: string\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      delay: (\n        durationMs?: number\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      fetch: <ResponseType = any>(\n        input: string | MockedRequest,\n        requestInit?: RequestInit\n      ) => Promise<ResponseType>;\n    },\n    ParsedRestRequest,\n    MockedRequest\n  >;\n  put: (\n    mask: Mask,\n    resolver: ResponseResolver<\n      MockedRequest,\n      {\n        set: typeof set;\n        status: (\n          statusCode: number,\n          statusText?: string\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        cookie: (\n          name: string,\n          value: string,\n          options?: any\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        body: <T>(\n          value: T\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        text: (\n          body: string\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        json: (\n          body: Record<string, any>\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        xml: (\n          body: string\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        delay: (\n          durationMs?: number\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        fetch: <ResponseType = any>(\n          input: string | MockedRequest,\n          requestInit?: RequestInit\n        ) => Promise<ResponseType>;\n      }\n    >\n  ) => RequestHandler<\n    MockedRequest,\n    {\n      set: typeof set;\n      status: (\n        statusCode: number,\n        statusText?: string\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      cookie: (\n        name: string,\n        value: string,\n        options?: any\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      body: <T>(\n        value: T\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      text: (\n        body: string\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      json: (\n        body: Record<string, any>\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      xml: (\n        body: string\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      delay: (\n        durationMs?: number\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      fetch: <ResponseType = any>(\n        input: string | MockedRequest,\n        requestInit?: RequestInit\n      ) => Promise<ResponseType>;\n    },\n    ParsedRestRequest,\n    MockedRequest\n  >;\n  delete: (\n    mask: Mask,\n    resolver: ResponseResolver<\n      MockedRequest,\n      {\n        set: typeof set;\n        status: (\n          statusCode: number,\n          statusText?: string\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        cookie: (\n          name: string,\n          value: string,\n          options?: any\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        body: <T>(\n          value: T\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        text: (\n          body: string\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        json: (\n          body: Record<string, any>\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        xml: (\n          body: string\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        delay: (\n          durationMs?: number\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        fetch: <ResponseType = any>(\n          input: string | MockedRequest,\n          requestInit?: RequestInit\n        ) => Promise<ResponseType>;\n      }\n    >\n  ) => RequestHandler<\n    MockedRequest,\n    {\n      set: typeof set;\n      status: (\n        statusCode: number,\n        statusText?: string\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      cookie: (\n        name: string,\n        value: string,\n        options?: any\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      body: <T>(\n        value: T\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      text: (\n        body: string\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      json: (\n        body: Record<string, any>\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      xml: (\n        body: string\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      delay: (\n        durationMs?: number\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      fetch: <ResponseType = any>(\n        input: string | MockedRequest,\n        requestInit?: RequestInit\n      ) => Promise<ResponseType>;\n    },\n    ParsedRestRequest,\n    MockedRequest\n  >;\n  patch: (\n    mask: Mask,\n    resolver: ResponseResolver<\n      MockedRequest,\n      {\n        set: typeof set;\n        status: (\n          statusCode: number,\n          statusText?: string\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        cookie: (\n          name: string,\n          value: string,\n          options?: any\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        body: <T>(\n          value: T\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        text: (\n          body: string\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        json: (\n          body: Record<string, any>\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        xml: (\n          body: string\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        delay: (\n          durationMs?: number\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        fetch: <ResponseType = any>(\n          input: string | MockedRequest,\n          requestInit?: RequestInit\n        ) => Promise<ResponseType>;\n      }\n    >\n  ) => RequestHandler<\n    MockedRequest,\n    {\n      set: typeof set;\n      status: (\n        statusCode: number,\n        statusText?: string\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      cookie: (\n        name: string,\n        value: string,\n        options?: any\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      body: <T>(\n        value: T\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      text: (\n        body: string\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      json: (\n        body: Record<string, any>\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      xml: (\n        body: string\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      delay: (\n        durationMs?: number\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      fetch: <ResponseType = any>(\n        input: string | MockedRequest,\n        requestInit?: RequestInit\n      ) => Promise<ResponseType>;\n    },\n    ParsedRestRequest,\n    MockedRequest\n  >;\n  options: (\n    mask: Mask,\n    resolver: ResponseResolver<\n      MockedRequest,\n      {\n        set: typeof set;\n        status: (\n          statusCode: number,\n          statusText?: string\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        cookie: (\n          name: string,\n          value: string,\n          options?: any\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        body: <T>(\n          value: T\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        text: (\n          body: string\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        json: (\n          body: Record<string, any>\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        xml: (\n          body: string\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        delay: (\n          durationMs?: number\n        ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n        fetch: <ResponseType = any>(\n          input: string | MockedRequest,\n          requestInit?: RequestInit\n        ) => Promise<ResponseType>;\n      }\n    >\n  ) => RequestHandler<\n    MockedRequest,\n    {\n      set: typeof set;\n      status: (\n        statusCode: number,\n        statusText?: string\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      cookie: (\n        name: string,\n        value: string,\n        options?: any\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      body: <T>(\n        value: T\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      text: (\n        body: string\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      json: (\n        body: Record<string, any>\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      xml: (\n        body: string\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      delay: (\n        durationMs?: number\n      ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n      fetch: <ResponseType = any>(\n        input: string | MockedRequest,\n        requestInit?: RequestInit\n      ) => Promise<ResponseType>;\n    },\n    ParsedRestRequest,\n    MockedRequest\n  >;\n};",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "restContext",
+    "overloads": [
+      {
+        "file": "src/rest.ts#L36-L46",
+        "signature": "const restContext: {\n  set: typeof set;\n  status: (\n    statusCode: number,\n    statusText?: string\n  ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n  cookie: (\n    name: string,\n    value: string,\n    options?: any\n  ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n  body: <T>(\n    value: T\n  ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n  text: (\n    body: string\n  ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n  json: (\n    body: Record<string, any>\n  ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n  xml: (\n    body: string\n  ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n  delay: (\n    durationMs?: number\n  ) => import(\"C:/Users/tdeschryver/dev/forks/msw/src/response\").ResponseTransformer;\n  fetch: <ResponseType = any>(\n    input: string | MockedRequest,\n    requestInit?: RequestInit\n  ) => Promise<ResponseType>;\n};",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "EnumDeclaration",
+    "module": "src",
+    "name": "RESTMethods",
+    "overloads": [
+      {
+        "file": "src/rest.ts#L27-L34",
+        "signature": "export enum RESTMethods {\n  GET = \"GET\",\n  POST = \"POST\",\n  PUT = \"PUT\",\n  PATCH = \"PATCH\",\n  OPTIONS = \"OPTIONS\",\n  DELETE = \"DELETE\",\n}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "ParsedRestRequest",
+    "overloads": [
+      {
+        "file": "src/rest.ts#L48-L50",
+        "signature": "interface ParsedRestRequest {\n  match: ReturnType<typeof matchRequestUrl>;\n}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "graphql",
+    "overloads": [
+      {
+        "file": "src/graphql.ts#L218-L221",
+        "signature": "const graphql: {\n  link: typeof createGraphQLLink;\n  query: <QueryType, VariablesType = Record<string, any>>(\n    expectedOperation: Mask,\n    resolver: GraphQLResponseResolver<QueryType, VariablesType>\n  ) => RequestHandler<\n    GraphQLMockedRequest<VariablesType>,\n    GraphQLMockedContext<QueryType>,\n    GraphQLRequestParsedResult<VariablesType>,\n    GraphQLMockedRequest<VariablesType>\n  >;\n  mutation: <QueryType, VariablesType = Record<string, any>>(\n    expectedOperation: Mask,\n    resolver: GraphQLResponseResolver<QueryType, VariablesType>\n  ) => RequestHandler<\n    GraphQLMockedRequest<VariablesType>,\n    GraphQLMockedContext<QueryType>,\n    GraphQLRequestParsedResult<VariablesType>,\n    GraphQLMockedRequest<VariablesType>\n  >;\n};",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "VariableDeclaration",
+    "module": "src",
+    "name": "graphqlContext",
+    "overloads": [
+      {
+        "file": "src/graphql.ts#L46-L53",
+        "signature": "const graphqlContext: GraphQLMockedContext<any>;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "GraphQLMockedRequest",
+    "overloads": [
+      {
+        "file": "src/graphql.ts#L26-L32",
+        "signature": "export type GraphQLMockedRequest<VariablesType = Record<string, any>> = Omit<\n  MockedRequest,\n  \"body\"\n> & {\n  body:\n    | (GraphQLRequestPayload<VariablesType> & Record<string, any>)\n    | undefined;\n  variables: VariablesType;\n};",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "GraphQLMockedContext",
+    "overloads": [
+      {
+        "file": "src/graphql.ts#L37-L44",
+        "signature": "interface GraphQLMockedContext<QueryType> {\n  set: typeof set;\n  status: typeof status;\n  delay: typeof delay;\n  fetch: typeof fetch;\n  data: DataContext<QueryType>;\n  errors: typeof errors;\n}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "InterfaceDeclaration",
+    "module": "src",
+    "name": "GraphQLRequestPayload",
+    "overloads": [
+      {
+        "file": "src/graphql.ts#L61-L64",
+        "signature": "interface GraphQLRequestPayload<VariablesType> {\n  query: string;\n  variables?: VariablesType;\n}",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "TypeAliasDeclaration",
+    "module": "src",
+    "name": "GraphQLResponseResolver",
+    "overloads": [
+      {
+        "file": "src/graphql.ts#L55-L59",
+        "signature": "export type GraphQLResponseResolver<QueryType, VariablesType> = (\n  req: GraphQLMockedRequest<VariablesType>,\n  res: ResponseComposition,\n  context: GraphQLMockedContext<QueryType>\n) => AsyncResponseResolverReturnType<MockedResponse>;",
+        "info": []
+      }
+    ]
+  },
+  {
+    "kind": "FunctionDeclaration",
+    "module": "src",
+    "name": "matchRequestUrl",
+    "overloads": [
+      {
+        "file": "src/utils/matching/matchRequestUrl.ts#L11-L20",
+        "signature": "function matchRequestUrl(url: URL, mask: Mask): ReturnType<typeof match>;",
+        "info": [
+          [
+            "description",
+            {
+              "__kind": "heading",
+              "description": "Returns the result of matching given request URL\nagainst a mask.\n"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "url",
+              "description": "",
+              "type": "URL"
+            }
+          ],
+          [
+            "param",
+            {
+              "__kind": "table",
+              "label": "mask",
+              "description": "",
+              "type": "Mask"
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]
