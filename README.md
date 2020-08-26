@@ -6,7 +6,7 @@ Generate markdown docs for your project's public API.
 
 ### Example
 
-```bash
+```
 npx docs-md --help
 
   Description
