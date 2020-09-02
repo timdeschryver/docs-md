@@ -21,7 +21,7 @@ npx docs-md --help
     -h, --help       Displays this message
 
   Examples
-    $ docs-md docs-md "./src/index.ts"
-    $ docs-md docs-md "./src/project1/index.ts,./src/project2/index.ts"
-    $ docs-md docs-md "./src/**/index.ts"
+    $ docs-md "./src/index.ts"
+    $ docs-md "./src/project1/index.ts,./src/project2/index.ts"
+    $ docs-md "./src/**/index.ts"
 ```
